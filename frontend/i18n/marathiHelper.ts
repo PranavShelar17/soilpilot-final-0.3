@@ -1,0 +1,1188 @@
+/**
+ * SoilPilot — Marathi Localization & Translation Normalizer
+ * Provides complete, robust Marathi translations for all soil parameters,
+ * status categories, agronomic advice, geographic administrative names,
+ * units, crops, and system labels.
+ */
+
+export const MARATHI_STATUS_MAP: Record<string, string> = {
+  // pH classifications
+  "strongly acidic": "तीव्र आम्लधर्मी",
+  "acidic": "आम्लधर्मी",
+  "acidic soil": "आम्लधर्मी माती",
+  "slightly acidic": "किंचित आम्लयुक्त",
+  "neutral": "उदासीन (योग्य सामू)",
+  "optimal neutral": "उत्कृष्ट उदासीन (योग्य सामू)",
+  "suitable": "योग्य (अनुकूल)",
+  "alkaline": "विम्लधर्मी",
+  "moderately alkaline": "मध्यम विम्लधर्मी (खारवट)",
+  "moderate alkaline": "मध्यम विम्लधर्मी",
+  "strongly alkaline": "तीव्र विम्लधर्मी (चोपण)",
+  "highly alkaline": "अति विम्लधर्मी (चोपण)",
+
+  // General Nutrient & Organic Carbon status
+  "optimal": "उत्कृष्ट (आदर्श)",
+  "good": "उत्कृष्ट / उत्तम",
+  "sufficient": "पुरेसे / योग्य",
+  "sufficient / high": "पुरेसे / भरपूर",
+  "safe": "सुरक्षित",
+  "normal": "सर्वसाधारण / सामान्य",
+  "non-saline": "क्षारमुक्त",
+  "slightly saline": "किंचित क्षारयुक्त",
+  "moderately saline": "मध्यम क्षारयुक्त",
+  "highly saline": "अति क्षारयुक्त",
+  "sodic": "चोपण / सोडियमयुक्त",
+  "sodic / problematic": "सोडियमयुक्त (समस्याग्रस्त)",
+  "low": "कमी",
+  "low / deficient": "कमी (कमतरता)",
+  "deficient": "कमतरता",
+  "deficient nitrogen": "कमी उपलब्ध नत्र",
+  "moderate nitrogen": "मध्यम उपलब्ध नत्र",
+  "medium": "मध्यम",
+  "moderate": "मध्यम",
+  "high": "जास्त",
+  "very high": "अति जास्त",
+  "high (calcareous)": "जास्त (चुनखडीयुक्त)",
+  "critical": "गंभीर",
+  "marginal": "सीमांत",
+
+  // Canopy & Vegetation Indices (NDVI / EVI)
+  "sparse / fallow": "विरळ पीक / पडिक जमीन",
+  "moderate canopy": "मध्यम पीक आच्छादन",
+  "healthy / dense canopy": "उत्कृष्ट / दाट पीक आच्छादन",
+  "low biomass": "कमी बायोमास",
+  "moderate biomass": "मध्यम बायोमास",
+  "high biomass": "उत्तम बायोमास",
+
+  // Bulk Density (BD) & Physical
+  "ideal porosity": "आदर्श सच्छिद्रता",
+  "optimal porosity": "उत्तम सच्छिद्रता",
+  "moderate density": "मध्यम घनता",
+  "compacted soil": "कठीण / चोपण जमीन",
+  "high density / compacted": "जास्त घनता / कठीण जमीन",
+  "low rock fragments (favorable)": "कमी दगड-गोटे (अनुकूल)",
+  "moderate coarse fragments": "मध्यम दगड-गोटे",
+  "high coarse rock content": "जास्त दगड-गोटे (खडकाळ)",
+  "medium clay texture": "मध्यम चिकण पोत",
+  "high clay vertisol (black soil)": "भारी काळी चिकण माती (Vertisol)",
+  "optimal vertisol clay": "उत्तम काळी चिकण माती (Vertisol)",
+  "heavy dense clay": "भारी जड चिकण माती",
+  "standard sand fraction": "प्रमाणित वाळू प्रमाण",
+  "fine / low sand fraction": "कमी वाळू (बारीक पोत)",
+  "optimal loamy sand": "मध्यम वाळू पोयटा",
+  "coarse sandy fraction": "जास्त वाळू निचरा",
+  "standard silt fraction": "प्रमाणित गाळ प्रमाण",
+  "light silt fraction": "हलका गाळ पोत",
+  "medium silt fraction": "मध्यम गाळ पोत",
+  "rich silt fraction": "उत्तम गाळ पोत",
+  "class 1: clay vertisol (काळी माती)": "वर्ग १: काळी चिकण माती (Vertisol)",
+
+  // Soil Chemical & Fertility
+  "moderate cation exchange": "मध्यम धनायन विनिमय क्षमता",
+  "high nutrient buffer": "उत्कृष्ट पोषक साठा (सुपीक)",
+  "high nutrient buffer (fertile)": "उत्कृष्ट अन्नद्रव्य धारण क्षमता (सुपीक)",
+
+  // Topography & Elevation
+  "flat to gentle (0-3%)": "सपाट ते मंद उतार (०-३%)",
+  "moderate slope (3-8%)": "मध्यम उतार (३-८%)",
+  "steep slope (erosion risk)": "तीव्र उतार (धूप होण्याचा धोका)",
+  "deccan plateau (~540-580m)": "दख्खनचे पठार (~५४०-५८० मी)",
+
+  // Moisture, Water & Bare Soil Indices
+  "moisture stressed (dry)": "कमी ओलावा / कोरडी जमीन",
+  "moderate moisture": "मध्यम ओलावा",
+  "high canopy moisture": "भरपूर ओलावा / सतेज पीक",
+  "dense vegetation cover": "दाट वनस्पती / पीक आच्छादन",
+  "partial soil exposure": "अंशतः उघडी जमीन",
+  "bare exposed soil": "उघडी / नांगरलेली जमीन",
+  "non-water / dry": "पाणी नसलेला भूभाग",
+  "moist ground / saturated": "पाणथळ / दलदलयुक्त जमीन",
+  "open surface water": "खुला जलसाठा / तलाव / विहीर",
+  "true-color optical satellite image": "नैसर्गिक रंग उपग्रह प्रतिमा",
+
+  // Prediction Uncertainty & Elevation
+  "high confidence": "उच्च अचूकता",
+  "moderate confidence": "मध्यम अचूकता",
+  "elevated uncertainty": "वाढीव अनिश्चितता",
+  "standard monitoring": "नियमित निरीक्षण",
+  "deccan plateau": "दख्खनचे पठार",
+
+  // Organic Matter & Carbon
+  "low organic carbon": "कमी सेंद्रिय कर्ब",
+  "low organic matter": "कमी सेंद्रिय कर्ब",
+  "medium organic carbon": "मध्यम सेंद्रिय कर्ब",
+  "high organic carbon": "उत्तम सेंद्रिय कर्ब",
+
+  // Administrative & Report Status
+  "recorded": "नोंदणीकृत",
+  "available": "उपलब्ध",
+  "not available": "उपलब्ध नाही",
+  "pending": "प्रलंबित",
+  "certified": "प्रमाणित",
+  "soil data available": "माती माहिती उपलब्ध",
+  "demo data": "नमुना माहिती / चाचणी डेटा",
+};
+
+export const MARATHI_PARAMETER_MAP: Record<string, string> = {
+  // 1. Soil Properties (0–30 cm Root-Zone Standardized)
+  "bdod": "मातीची घनता (०-३० सेमी)",
+  "bulk density (0–30 cm)": "मातीची घनता (०-३० सेमी)",
+  "cec": "धनायन विनिमय क्षमता - CEC (०-३० सेमी)",
+  "cation exchange capacity - cec (0–30 cm)": "धनायन विनिमय क्षमता - CEC (०-३० सेमी)",
+  "cfvo": "जाड दगड-गोटे प्रमाण (०-३० सेमी)",
+  "coarse fragments volumetric fraction (0–30 cm)": "जाड दगड-गोटे प्रमाण (०-३० सेमी)",
+  "clay": "मातीतील चिकण प्रमाण (०-३० सेमी)",
+  "clay proportion (0–30 cm)": "मातीतील चिकण प्रमाण (०-३० सेमी)",
+  "sand": "मातीतील वाळूचे प्रमाण (०-३० सेमी)",
+  "sand proportion (0–30 cm)": "मातीतील वाळूचे प्रमाण (०-३० सेमी)",
+  "silt": "मातीतील गाळाचे प्रमाण (०-३० सेमी)",
+  "silt proportion (0–30 cm)": "मातीतील गाळाचे प्रमाण (०-३० सेमी)",
+  "soc": "सेंद्रिय कर्ब - SOC (०-३० सेमी)",
+  "soil organic carbon - soc (0–30 cm)": "सेंद्रिय कर्ब - SOC (०-३० सेमी)",
+  "nitrogen": "एकूण नत्र (०-३० सेमी)",
+  "total nitrogen (0–30 cm)": "एकूण नत्र (०-३० सेमी)",
+  "ph": "जमिनीचा सामू (pH) (०-३० सेमी)",
+  "soil ph (h2o) (0–30 cm)": "जमिनीचा सामू (pH) (०-३० सेमी)",
+  "soil ph (h₂o) (0–30 cm)": "जमिनीचा सामू (pH) (०-३० सेमी)",
+  "soil_texture": "USDA मातीचा पोत वर्ग (०-३० सेमी)",
+  "usda soil texture classes (0–30 cm)": "USDA मातीचा पोत वर्ग (०-३० सेमी)",
+
+  // 2. Topography & Elevation
+  "elevation": "डिजिटल एलिव्हेशन मॉडेल (DEM)",
+  "digital elevation model (dem)": "डिजिटल एलिव्हेशन मॉडेल (DEM)",
+  "slope": "जमिनीचा उतार (Slope Gradient)",
+  "slope gradient": "जमिनीचा उतार (Slope Gradient)",
+
+  // 3. Land Use & Multi-Spectral Indices
+  "lulc": "जमीन वापर व आच्छादन (Dynamic World)",
+  "land use / land cover (dynamic world)": "जमीन वापर व आच्छादन (Dynamic World)",
+  "kharif_rgb": "खरीप हंगाम नैसर्गिक रंग उपग्रह प्रतिमा",
+  "kharif season true-color composite": "खरीप हंगाम नैसर्गिक रंग उपग्रह प्रतिमा",
+  "rabi_rgb": "रब्बी हंगाम नैसर्गिक रंग उपग्रह प्रतिमा",
+  "rabi season true-color composite": "रब्बी हंगाम नैसर्गिक रंग उपग्रह प्रतिमा",
+  "ndvi": "वनस्पती निर्देशांक (NDVI)",
+  "normalized difference vegetation index (ndvi)": "वनस्पती निर्देशांक (NDVI)",
+  "evi": "वर्धित वनस्पती निर्देशांक (EVI)",
+  "enhanced vegetation index (evi)": "वर्धित वनस्पती निर्देशांक (EVI)",
+  "savi": "माती-समायोजित वनस्पती निर्देशांक (SAVI)",
+  "soil-adjusted vegetation index (savi)": "माती-समायोजित वनस्पती निर्देशांक (SAVI)",
+  "ndmi": "ओलावा निर्देशांक (NDMI)",
+  "normalized difference moisture index (ndmi)": "ओलावा निर्देशांक (NDMI)",
+  "ndre": "रेड एज वनस्पती निर्देशांक (NDRE)",
+  "normalized difference red edge (ndre)": "रेड एज वनस्पती निर्देशांक (NDRE)",
+  "bsi": "उघडी माती निर्देशांक (BSI)",
+  "bare soil index (bsi)": "उघडी माती निर्देशांक (BSI)",
+  "ndwi": "पाणी निर्देशांक (NDWI)",
+  "normalized difference water index (ndwi)": "पाणी निर्देशांक (NDWI)",
+
+  // Chemical & Lab defaults
+  "soil ph": "मातीचा सामू (pH)",
+  "soil_ph": "मातीचा सामू (pH)",
+  "ec": "विद्युत वाहकता (EC)",
+  "electrical conductivity": "विद्युत वाहकता (EC)",
+  "electrical_conductivity": "विद्युत वाहकता (EC)",
+  "organic_carbon": "सेंद्रिय कर्ब (OC)",
+  "organic carbon": "सेंद्रिय कर्ब (OC)",
+  "available_nitrogen": "उपलब्ध नत्र (N)",
+  "available nitrogen": "उपलब्ध नत्र (N)",
+  "available_phosphorus": "उपलब्ध स्फुरद (P)",
+  "available phosphorus": "उपलब्ध स्फुरद (P)",
+  "phosphorus": "उपलब्ध स्फुरद (P)",
+  "available_potassium": "उपलब्ध पालाश (K)",
+  "available potassium": "उपलब्ध पालाश (K)",
+  "potassium": "उपलब्ध पालाश (K)",
+  "exchangeable_sodium": "विनिमययोग्य सोडियम (ESP)",
+  "exchangeable sodium percentage": "विनिमययोग्य सोडियम (ESP)",
+  "esp": "विनिमययोग्य सोडियम (ESP)",
+  "free_lime": "मुक्त चुनखडी (CaCO3)",
+  "free lime": "मुक्त चुनखडी (CaCO3)",
+  "free lime (caco3)": "मुक्त चुनखडी (CaCO3)",
+  "iron": "उपलब्ध लोह (Fe)",
+  "available iron": "उपलब्ध लोह (Fe)",
+  "available iron (fe)": "उपलब्ध लोह (Fe)",
+  "manganese": "उपलब्ध मँगनीज (Mn)",
+  "available manganese": "उपलब्ध मँगनीज (Mn)",
+  "available manganese (mn)": "उपलब्ध मँगनीज (Mn)",
+  "zinc": "उपलब्ध जस्त (Zn)",
+  "available zinc": "उपलब्ध जस्त (Zn)",
+  "available zinc (zn)": "उपलब्ध जस्त (Zn)",
+  "copper": "उपलब्ध तांबे (Cu)",
+  "available copper": "उपलब्ध तांबे (Cu)",
+  "available copper (cu)": "उपलब्ध तांबे (Cu)",
+  "sulphur": "उपलब्ध गंधक (S)",
+  "available sulphur": "उपलब्ध गंधक (S)",
+  "available sulphur (s)": "उपलब्ध गंधक (S)",
+  "boron": "उपलब्ध बोरॉन (B)",
+  "available boron": "उपलब्ध बोरॉन (B)",
+  "available boron (b)": "उपलब्ध बोरॉन (B)",
+  "bd": "मातीची घनता (BD)",
+  "bulk density": "मातीची घनता (BD)",
+  "bulk_density": "मातीची घनता (BD)",
+  "elevation (dem)": "जमिनीची उंची (DEM)",
+  "uncertainty": "अनिश्चितता (Uncertainty)",
+  "prediction uncertainty": "अनिश्चितता (Uncertainty)",
+};
+
+export const MARATHI_GEO_MAP: Record<string, string> = {
+  "maharashtra": "महाराष्ट्र",
+  "pune": "पुणे",
+  "baramati": "बारामती",
+  "malegaon kh": "माळेगाव खुर्द",
+  "malegaon kh.": "माळेगाव खुर्द",
+  "malegaon bk": "माळेगाव बुद्रुक",
+  "malegaon bk.": "माळेगाव बुद्रुक",
+  "malegaon": "माळेगाव",
+  "haveli": "हवेली",
+  "daund": "दौंड",
+  "indapur": "इंदापूर",
+  "shirur": "शिरूर",
+  "purandar": "पुरंदर",
+  "bhor": "भोर",
+  "velha": "वेल्हे",
+  "khed": "खेड",
+  "junnar": "जुन्नर",
+  "ambegaon": "आंबेगाव",
+  "maval": "मावळ",
+  "mulshi": "मुळशी",
+  "pimpri-chinchwad": "पिंपरी-चिंचवड",
+  "loni kalbhor": "लोणी काळभोर",
+  "pune city": "पुणे शहर",
+};
+
+export const MARATHI_CROP_MAP: Record<string, string> = {
+  "sugarcane": "ऊस",
+  "sugarcane / cash crop": "ऊस / नगदी पीक",
+  "sugarcane (ऊस)": "ऊस (नगदी पीक)",
+  "pomegranate": "डाळिंब",
+  "banana": "केळी",
+  "tomato": "टोमॅटो",
+  "maize": "मका",
+  "onion": "कांदा",
+  "wheat": "गहू",
+  "soybean": "सोयाबीन",
+  "gram": "हरभरा",
+  "cotton": "कापूस",
+  "cash crop": "नगदी पीक",
+};
+
+export const MARATHI_FARMER_MAP: Record<string, string> = {
+  "farmer": "शेतकरी",
+  "unassigned": "नोंदणीकृत शेतकरी",
+  "suresh patil": "सुरेश पाटील",
+  "dattatraya shinde": "दत्तात्रय शिंदे",
+  "ramesh patil": "रमेश पाटील",
+  "ramesh patil (रमेश पाटील)": "रमेश पाटील",
+  "pradip bhauso shelar": "प्रदिप भाऊसो शेलार",
+  "pradeep bhauso shelar": "प्रदिप भाऊसो शेलार",
+  "sunnabi ismail bagavan": "सुन्नाबी इस्माइल बागवान",
+  "sunabi ismail bagwan": "सुन्नाबी इस्माइल बागवान",
+  "rajendra vasantrao kate": "राजेंद्र वसंतराव काटे",
+  "rajendra vasntrao kate": "राजेंद्र वसंतराव काटे",
+  "chandrakant sitaram saste": "चंद्रकांत सीताराम सस्ते",
+  "chandrakant sitaram saste (चंद्रकांत सीताराम सस्ते)": "चंद्रकांत सीताराम सस्ते",
+};
+
+export const MARATHI_UNIT_MAP: Record<string, string> = {
+  "hectare": "हेक्टर",
+  "hectares": "हेक्टर",
+  "ha": "हे.",
+  "acre": "एकर",
+  "acres": "एकर",
+  "ac": "एकर",
+  "kg/ha": "कि.ग्रॅ./हेक्टर",
+  "ppm": "ppm",
+  "ds/m": "dS/m",
+  "%": "%",
+  "g/cm³": "g/cm³",
+  "quintal": "क्विंटल",
+  "qtl": "क्विंटल",
+  "ton": "टन",
+  "tonne": "टन",
+  "tonnes": "टन",
+  "kg": "किलो",
+  "crate": "क्रेट",
+  "crates": "क्रेट",
+  "dozen": "डझन",
+  "piece": "नग",
+  "pieces": "नग",
+  "bag": "पोते",
+  "bags": "पोते",
+};
+
+export const REVERSE_UNIT_MAP: Record<string, string> = {
+  "क्विंटल": "Quintal",
+  "टन": "Tonne",
+  "किलो": "Kg",
+  "हेक्टर": "Hectare",
+  "हे.": "Ha",
+  "एकर": "Acre",
+  "कि.ग्रॅ./हेक्टर": "kg/ha",
+  "डझन": "Dozen",
+  "क्रेट": "Crates",
+  "नग": "Pieces",
+  "पोते": "Bags",
+  "गोणी": "Bags",
+};
+
+export const REVERSE_GEO_MAP: Record<string, string> = {
+  "महाराष्ट्र": "Maharashtra",
+  "पुणे": "Pune",
+  "पुणे शहर": "Pune City",
+  "बारामती": "Baramati",
+  "माळेगाव खुर्द": "Malegaon Kh.",
+  "माळेगाव खु.": "Malegaon Kh.",
+  "माळेगाव खु": "Malegaon Kh.",
+  "माळेगाव बुद्रुक": "Malegaon Bk.",
+  "माळेगाव बु.": "Malegaon Bk.",
+  "माळेगाव बु": "Malegaon Bk.",
+  "माळेगाव": "Malegaon",
+  "हवेली": "Haveli",
+  "दौंड": "Daund",
+  "इंदापूर": "Indapur",
+  "शिरूर": "Shirur",
+  "पुरंदर": "Purandar",
+  "भोर": "Bhor",
+  "वेल्हे": "Velhe",
+  "खेड": "Khed",
+  "जुन्नर": "Junnar",
+  "आंबेगाव": "Ambegaon",
+  "मावळ": "Maval",
+  "मुळशी": "Mulshi",
+  "पिंपरी-चिंचवड": "Pimpri-Chinchwad",
+  "लोणी काळभोर": "Loni Kalbhor",
+};
+
+export const REVERSE_CROP_MAP: Record<string, string> = {
+  "ऊस": "Sugarcane",
+  "ऊस / नगदी पीक": "Sugarcane / Cash Crop",
+  "ऊस (नगदी पीक)": "Sugarcane",
+  "डाळिंब": "Pomegranate",
+  "केळी": "Banana",
+  "टोमॅटो": "Tomato",
+  "मका": "Maize",
+  "कांदा": "Onion",
+  "सोयाबीन": "Soybean",
+  "गहू": "Wheat",
+  "हरभरा": "Gram / Chickpea",
+  "कापूस": "Cotton",
+  "नगदी पीक": "Cash Crop",
+  "बाजरी": "Bajra",
+  "ज्वारी": "Jowar",
+};
+
+export const REVERSE_STATUS_MAP: Record<string, string> = {
+  "तीव्र आम्लधर्मी": "Strongly Acidic",
+  "आम्लधर्मी": "Acidic",
+  "आम्लधर्मी माती": "Acidic Soil",
+  "किंचित आम्लयुक्त": "Slightly Acidic",
+  "उदासीन (योग्य सामू)": "Neutral (Optimal)",
+  "उत्कृष्ट उदासीन (योग्य सामू)": "Optimal Neutral",
+  "उत्कृष्ट उदासीन": "Optimal Neutral",
+  "योग्य (अनुकूल)": "Suitable",
+  "विम्लधर्मी": "Alkaline",
+  "मध्यम विम्लधर्मी (खारवट)": "Moderately Alkaline",
+  "मध्यम विम्लधर्मी": "Moderately Alkaline",
+  "तीव्र विम्लधर्मी (चोपण)": "Strongly Alkaline",
+  "अति विम्लधर्मी (चोपण)": "Highly Alkaline",
+  "तीव्र विम्लधर्मी": "Strongly Alkaline",
+  "उत्कृष्ट (आदर्श)": "Optimal",
+  "उत्कृष्ट / उत्तम": "Good",
+  "पुरेसे / योग्य": "Sufficient",
+  "पुरेसे / भरपूर": "Sufficient / High",
+  "सुरक्षित": "Safe",
+  "सर्वसाधारण / सामान्य": "Normal",
+  "क्षारमुक्त": "Non-Saline",
+  "किंचित क्षारयुक्त": "Slightly Saline",
+  "मध्यम क्षारयुक्त": "Moderately Saline",
+  "अति क्षारयुक्त": "Highly Saline",
+  "क्षारयुक्त": "Saline",
+  "चोपण / सोडियमयुक्त": "Sodic",
+  "कमी": "Low",
+  "कमी (कमतरता)": "Low / Deficient",
+  "कमतरता": "Deficient",
+  "कमी उपलब्ध नत्र": "Deficient Nitrogen",
+  "मध्यम उपलब्ध नत्र": "Moderate Nitrogen",
+  "मध्यम": "Medium",
+  "जास्त": "High",
+  "अति जास्त": "Very High",
+  "जास्त (चुनखडीयुक्त)": "High (Calcareous)",
+  "गंभीर": "Critical",
+  "सीमांत": "Marginal",
+  "उपलब्ध नाही": "Not Available",
+  "प्रलंबित": "Pending",
+  "उपलब्ध": "Available",
+};
+
+/**
+ * Translates any diagnostic or classification status into Marathi or English
+ */
+export function translateStatus(
+  status: string | null | undefined,
+  isMarathi: boolean = true
+): string {
+  if (!status) return isMarathi ? "उपलब्ध नाही" : "Not Available";
+  const trimmed = status.trim();
+
+  // English requested
+  if (!isMarathi) {
+    if (REVERSE_STATUS_MAP[trimmed]) return REVERSE_STATUS_MAP[trimmed];
+    for (const [mr, en] of Object.entries(REVERSE_STATUS_MAP)) {
+      if (trimmed.includes(mr)) return en;
+    }
+    if (/[\u0900-\u097F]/.test(trimmed)) {
+      return devanagariToEnglish(trimmed);
+    }
+    return status;
+  }
+
+  // Marathi requested
+  if (/[\u0900-\u097F]/.test(trimmed)) {
+    return status;
+  }
+
+  const normalized = trimmed.toLowerCase();
+  if (MARATHI_STATUS_MAP[normalized]) {
+    return MARATHI_STATUS_MAP[normalized];
+  }
+
+  // Substring checks
+  if (normalized.includes("very high")) return "अति जास्त";
+  if (normalized.includes("strongly alkaline") || normalized.includes("highly alkaline")) return "तीव्र विम्लधर्मी";
+  if (normalized.includes("moderate alkaline") || normalized.includes("moderately alkaline")) return "मध्यम विम्लधर्मी";
+  if (normalized.includes("alkaline")) return "विम्लधर्मी";
+  if (normalized.includes("strongly acidic")) return "तीव्र आम्लधर्मी";
+  if (normalized.includes("acidic")) return "आम्लधर्मी";
+  if (normalized.includes("neutral") || normalized.includes("optimal")) return "उत्कृष्ट उदासीन";
+  if (normalized.includes("good") || normalized.includes("safe") || normalized.includes("normal")) return "सुरक्षित";
+  if (normalized.includes("low") || normalized.includes("deficient")) return "कमी";
+  if (normalized.includes("medium") || normalized.includes("moderate")) return "मध्यम";
+  if (normalized.includes("high")) return "जास्त";
+  if (normalized.includes("critical")) return "गंभीर";
+  if (normalized.includes("saline")) return "क्षारयुक्त";
+  if (normalized.includes("pending")) return "प्रलंबित";
+  if (normalized.includes("available")) return "उपलब्ध";
+
+  return status;
+}
+
+/**
+ * Translates parameter names into Marathi or English
+ */
+export function translateParamName(
+  paramNameOrKey: string | null | undefined,
+  isMarathi: boolean = true
+): string {
+  if (!paramNameOrKey) return "";
+  const trimmed = paramNameOrKey.trim();
+
+  // English requested
+  if (!isMarathi) {
+    for (const [en, mr] of Object.entries(MARATHI_PARAMETER_MAP)) {
+      if (mr === trimmed || trimmed.includes(mr)) {
+        return en.charAt(0).toUpperCase() + en.slice(1);
+      }
+    }
+    if (/[\u0900-\u097F]/.test(trimmed)) {
+      return devanagariToEnglish(trimmed);
+    }
+    return paramNameOrKey;
+  }
+
+  // Marathi requested
+  if (/[\u0900-\u097F]/.test(paramNameOrKey)) {
+    return paramNameOrKey;
+  }
+
+  const normalized = trimmed.toLowerCase();
+  if (MARATHI_PARAMETER_MAP[normalized]) {
+    return MARATHI_PARAMETER_MAP[normalized];
+  }
+
+  return paramNameOrKey;
+}
+
+/**
+ * Translates administrative geographic names (State, District, Taluka, Village) into Marathi or English
+ */
+export function translateGeoName(
+  geoName: string | null | undefined,
+  isMarathi: boolean = true
+): string {
+  if (!geoName) return "";
+  const trimmed = geoName.trim();
+
+  // English requested
+  if (!isMarathi) {
+    if (REVERSE_GEO_MAP[trimmed]) return REVERSE_GEO_MAP[trimmed];
+    for (const [mr, en] of Object.entries(REVERSE_GEO_MAP)) {
+      if (mr.toLowerCase() === trimmed.toLowerCase()) return en;
+    }
+    if (/[\u0900-\u097F]/.test(trimmed)) {
+      return devanagariToEnglish(trimmed);
+    }
+    return geoName;
+  }
+
+  // Marathi requested
+  if (/[\u0900-\u097F]/.test(trimmed)) {
+    return trimmed;
+  }
+
+  const normalized = trimmed.toLowerCase();
+  if (MARATHI_GEO_MAP[normalized]) {
+    return MARATHI_GEO_MAP[normalized];
+  }
+
+  return geoName;
+}
+
+export const ALLOWED_CROP_CODES = new Set([
+  "SUGARCANE",
+  "POMEGRANATE",
+  "MAIZE",
+  "SOYBEAN",
+  "BANANA",
+  "ONION",
+  "TOMATO",
+]);
+
+/**
+ * Checks whether an item or string belongs strictly to the 7 permitted crops:
+ * Sugarcane, Pomegranate, Maize, Soybean, Banana, Onion, Tomato.
+ */
+export function isAllowedCrop(crop: any): boolean {
+  if (!crop) return false;
+
+  if (typeof crop === "string") {
+    const raw = crop.toUpperCase().trim();
+    if (ALLOWED_CROP_CODES.has(raw)) return true;
+    const lower = crop.toLowerCase();
+    if (lower.includes("sugarcane") || lower.includes("ऊस") || lower.includes("oos")) return true;
+    if (lower.includes("pomegranate") || lower.includes("डाळिंब") || lower.includes("डाळींब") || lower.includes("dalimb")) return true;
+    if (lower.includes("maize") || lower.includes("मका") || lower.includes("corn") || lower.includes("makka")) return true;
+    if (lower.includes("soybean") || lower.includes("सोयाबीन") || lower.includes("soya")) return true;
+    if (lower.includes("banana") || lower.includes("केळी") || lower.includes("keli")) return true;
+    if (lower.includes("onion") || lower.includes("कांदा") || lower.includes("kanda")) return true;
+    if (lower.includes("tomato") || lower.includes("टोमॅटो") || lower.includes("tameta")) return true;
+    return false;
+  }
+
+  const code = (crop.crop_code || crop.comm_code || crop.code || crop.commodity_code || "").toUpperCase();
+  if (code && ALLOWED_CROP_CODES.has(code)) return true;
+
+  const names = [crop.crop_name, crop.commodity_name, crop.name, crop.crop_name_mr, crop.commodity_name_mr, crop.name_mr];
+  for (const n of names) {
+    if (n && typeof n === "string" && isAllowedCrop(n)) return true;
+  }
+  return false;
+}
+
+/**
+ * Removes sub-names, secondary labels enclosed in brackets, and variety qualifiers
+ * e.g. "Bhagwa Pomegranate" -> "Pomegranate", "Suru Sugarcane" -> "Sugarcane"
+ * "Grand Naine Banana" -> "Banana", "Rabi Grain Maize" -> "Maize"
+ * "Rabi Red Onion" -> "Onion", "Yellow Soybean" -> "Soybean"
+ */
+export function cleanCropName(name?: string | null): string {
+  if (!name) return "";
+  let cleaned = name.replace(/\s*\([^)]*\)/g, "").trim();
+
+  // Strip variety adjectives / prefixes / suffixes in English and Marathi
+  if (/pomegranate|डाळिंब/i.test(cleaned)) {
+    return /[\u0900-\u097F]/.test(cleaned) ? "डाळिंब" : "Pomegranate";
+  }
+  if (/banana|केळी/i.test(cleaned)) {
+    return /[\u0900-\u097F]/.test(cleaned) ? "केळी" : "Banana";
+  }
+  if (/tomato|टोमॅटो/i.test(cleaned)) {
+    return /[\u0900-\u097F]/.test(cleaned) ? "टोमॅटो" : "Tomato";
+  }
+  if (/onion|कांदा/i.test(cleaned)) {
+    return /[\u0900-\u097F]/.test(cleaned) ? "कांदा" : "Onion";
+  }
+  if (/sugarcane|ऊस/i.test(cleaned)) {
+    return /[\u0900-\u097F]/.test(cleaned) ? "ऊस" : "Sugarcane";
+  }
+  if (/maize|corn|मका/i.test(cleaned)) {
+    return /[\u0900-\u097F]/.test(cleaned) ? "मका" : "Maize";
+  }
+  if (/soybean|सोयाबीन/i.test(cleaned)) {
+    return /[\u0900-\u097F]/.test(cleaned) ? "सोयाबीन" : "Soybean";
+  }
+
+  // General fallback: remove common variety prefixes
+  cleaned = cleaned
+    .replace(/^(Bhagwa|Grand Naine|Suru|Rabi Grain|Rabi Red|Rabi|Hybrid|Yellow|Table)\s+/i, "")
+    .replace(/^(भगवा|ग्रँड नैन|सुरू|रब्बी धान्य|रब्बी लाल|रब्बी|संकरित|हायब्रिड|पिवळा|पिवळे)\s+/i, "")
+    .trim();
+
+  return cleaned;
+}
+
+/**
+ * Translates crop category into Marathi or formatted English
+ */
+export function translateCropCategory(
+  category?: string | null,
+  isMarathi: boolean = true
+): string {
+  if (!category) return "";
+  const cat = category.toLowerCase().trim();
+  if (isMarathi) {
+    if (cat.includes("cash")) return "नगदी पिके";
+    if (cat.includes("cereal") || cat.includes("millet")) return "धान्य";
+    if (cat.includes("pulse")) return "कडधान्ये";
+    if (cat.includes("oilseed")) return "तेलबिया";
+    if (cat.includes("veg")) return "भाजीपाला";
+    return category;
+  }
+  if (cat.includes("cash")) return "Cash Crops";
+  if (cat.includes("cereal") || cat.includes("millet")) return "Cereals & Millets";
+  if (cat.includes("pulse")) return "Pulses";
+  if (cat.includes("oilseed")) return "Oilseeds";
+  if (cat.includes("veg")) return "Vegetables";
+  return category.charAt(0).toUpperCase() + category.slice(1);
+}
+
+/**
+ * Translates crop water requirement into Marathi or English
+ */
+export function translateWaterRequirement(
+  water?: string | null,
+  isMarathi: boolean = true
+): string {
+  if (!water) return "";
+  const w = water.toUpperCase().trim();
+  if (isMarathi) {
+    if (w === "LOW") return "कमी";
+    if (w === "MEDIUM" || w === "MODERATE") return "मध्यम";
+    if (w === "HIGH") return "जास्त";
+    if (w === "VERY_HIGH") return "अति जास्त";
+    return water;
+  }
+  if (w === "LOW") return "Low";
+  if (w === "MEDIUM" || w === "MODERATE") return "Medium";
+  if (w === "HIGH") return "High";
+  if (w === "VERY_HIGH") return "Very High";
+  return water;
+}
+
+/**
+ * Translates crop planting window status into Marathi or English
+ */
+export function translatePlantingStatus(
+  status?: string | null,
+  isMarathi: boolean = true
+): string {
+  if (!status) return "";
+  const s = status.toUpperCase().trim();
+  if (isMarathi) {
+    if (s === "OPTIMAL_NOW") return "पेरणीस योग्य";
+    if (s === "OPENING_SOON") return "लवकरच सुरू";
+    if (s === "CLOSING_SOON") return "मुदत संपत आहे";
+    if (s === "OFF_SEASON") return "हंगाम नसलेली";
+    return status;
+  }
+  if (s === "OPTIMAL_NOW") return "Optimal Now";
+  if (s === "OPENING_SOON") return "Opening Soon";
+  if (s === "CLOSING_SOON") return "Closing Soon";
+  if (s === "OFF_SEASON") return "Off-Season";
+  return status.replace(/_/g, " ");
+}
+
+/**
+ * Translates crop labor requirement into Marathi or English
+ */
+export function translateLaborRequirement(
+  labor?: string | null,
+  isMarathi: boolean = true
+): string {
+  if (!labor) return "";
+  const l = labor.toUpperCase().trim();
+  if (isMarathi) {
+    if (l === "LOW") return "कमी मजूर";
+    if (l === "MEDIUM" || l === "MODERATE") return "मध्यम मजूर";
+    if (l === "HIGH" || l === "INTENSIVE") return "अधिक मजूर";
+    return labor;
+  }
+  if (l === "LOW") return "Low Labor";
+  if (l === "MEDIUM" || l === "MODERATE") return "Moderate Labor";
+  if (l === "HIGH" || l === "INTENSIVE") return "Intensive Labor";
+  return `${labor} Labor`;
+}
+
+export const MARATHI_CROP_TOLERANCE_MAP: Record<string, string> = {
+  "highly tolerant (medium to heavy soil)": "अत्यंत सहनशील (मध्यम ते भारी जमीन)",
+  "moderately tolerant (calcareous soil suitable)": "मध्यम सहनशील (चुनखडीयुक्त जमिनीसाठी योग्य)",
+  "moderately tolerant": "मध्यम सहनशील",
+  "sensitive / vegetable": "संवेदनशील / भाजीपाला पीक",
+  "bulb crop / sensitive": "कंद पीक / संवेदनशील",
+  "high water / tropical": "जास्त पाणी लागणारे / उष्णकटिबंधीय",
+  "sensitive (heavy soils recommended)": "संवेदनशील (भारी जमीन शिफारस)",
+  "sensitive (light soils recommended)": "संवेदनशील (हलकी जमीन शिफारस)",
+  "sensitive citrus": "संवेदनशील लिंबूवर्गीय फळपीक",
+};
+
+/**
+ * Translates crop tolerance / agronomic sensitivity description into Marathi or English
+ */
+export function translateCropTolerance(
+  tolerance?: string | null,
+  isMarathi: boolean = true
+): string {
+  if (!tolerance) return "";
+  const trimmed = tolerance.trim();
+  if (!isMarathi) {
+    if (/[\u0900-\u097F]/.test(trimmed)) {
+      for (const [en, mr] of Object.entries(MARATHI_CROP_TOLERANCE_MAP)) {
+        if (mr === trimmed || trimmed.includes(mr)) return en;
+      }
+      return devanagariToEnglish(trimmed);
+    }
+    return tolerance;
+  }
+  const norm = trimmed.toLowerCase();
+  if (MARATHI_CROP_TOLERANCE_MAP[norm]) {
+    return MARATHI_CROP_TOLERANCE_MAP[norm];
+  }
+  return tolerance;
+}
+
+/**
+ * Translates crop names into Marathi or English
+ */
+export function translateCropName(
+  crop: string | null | undefined,
+  isMarathi: boolean = true
+): string {
+  if (!crop) return isMarathi ? "ऊस" : "Sugarcane";
+  const cleaned = cleanCropName(crop);
+  const trimmed = cleaned.trim();
+  const lower = trimmed.toLowerCase();
+
+  // English requested
+  if (!isMarathi) {
+    if (REVERSE_CROP_MAP[trimmed]) return REVERSE_CROP_MAP[trimmed];
+    for (const [mr, en] of Object.entries(REVERSE_CROP_MAP)) {
+      if (mr.toLowerCase() === trimmed.toLowerCase()) return en;
+    }
+    if (/onion|कांदा|kanda/i.test(trimmed)) return "Onion";
+    if (/tomato|टोमॅटो/i.test(trimmed)) return "Tomato";
+    if (/maize|corn|मका/i.test(trimmed)) return "Maize";
+    if (/sugarcane|ऊस/i.test(trimmed)) return "Sugarcane";
+    if (/pomegranate|डाळिंब|डाळींब/i.test(trimmed)) return "Pomegranate";
+    if (/banana|केळी/i.test(trimmed)) return "Banana";
+    if (/soybean|सोयाबीन/i.test(trimmed)) return "Soybean";
+    if (/wheat|गहू/i.test(trimmed)) return "Wheat";
+    if (/gram|chana|harbara|हरभरा|चना/i.test(trimmed)) return "Bengal Gram";
+    if (/cotton|कापूस/i.test(trimmed)) return "Cotton";
+    if (/[\u0900-\u097F]/.test(trimmed)) {
+      return devanagariToEnglish(trimmed);
+    }
+    return crop;
+  }
+
+  // Marathi requested
+  if (/[\u0900-\u097F]/.test(trimmed)) {
+    if (/कांदा/i.test(trimmed)) return "कांदा";
+    if (/टोमॅटो/i.test(trimmed)) return "टोमॅटो";
+    if (/मका/i.test(trimmed)) return "मका";
+    if (/ऊस/i.test(trimmed)) return "ऊस";
+    if (/डाळिंब|डाळींब/i.test(trimmed)) return "डाळिंब";
+    if (/केळी/i.test(trimmed)) return "केळी";
+    if (/सोयाबीन/i.test(trimmed)) return "सोयाबीन";
+    if (/गहू/i.test(trimmed)) return "गहू";
+    if (/हरभरा|चना/i.test(trimmed)) return "हरभरा";
+    return trimmed;
+  }
+
+  if (/onion|kanda/i.test(lower)) return "कांदा";
+  if (/tomato/i.test(lower)) return "टोमॅटो";
+  if (/maize|corn/i.test(lower)) return "मका";
+  if (/sugarcane/i.test(lower)) return "ऊस";
+  if (/pomegranate/i.test(lower)) return "डाळिंब";
+  if (/banana/i.test(lower)) return "केळी";
+  if (/soybean/i.test(lower)) return "सोयाबीन";
+  if (/wheat/i.test(lower)) return "गहू";
+  if (/gram|chana|harbara/i.test(lower)) return "हरभरा";
+  if (/cotton/i.test(lower)) return "कापूस";
+
+  const normalized = trimmed.toLowerCase();
+  if (MARATHI_CROP_MAP[normalized]) {
+    return MARATHI_CROP_MAP[normalized];
+  }
+
+  return crop;
+}
+
+/**
+ * Accurately transliterates Marathi Devanagari text to Romanized Latin (English)
+ */
+export function devanagariToEnglish(text: string | null | undefined): string {
+  if (!text) return "";
+
+  // Common dictionary overrides for titles, relationships, suffixes, surnames
+  const wordOverrides: Record<string, string> = {
+    "उर्फ": "alias",
+    "मयत": "Late",
+    "वारस": "Heir",
+    "नावे": "in name of",
+    "इतर": "others",
+    "वगैरे": "etc.",
+    "आणि": "and",
+    "श्री": "Shri",
+    "श्रीमती": "Shrimati",
+    "सौ": "Sau.",
+    "कु": "Ku.",
+    "अण्णा": "Anna",
+    "भाऊ": "Bhau",
+    "भाऊसो": "Bhauso",
+    "आप्पा": "Appa",
+    "बापू": "Bapu",
+    "तात्या": "Tatya",
+    "काका": "Kaka",
+    "नाना": "Nana",
+    "दादा": "Dada",
+    "साहेब": "Saheb",
+    "राव": "Rao",
+    "बाळासाहेब": "Balasaheb",
+    "दत्तात्रय": "Dattatray",
+    "राजेंद्र": "Rajendra",
+    "राजेंद": "Rajendra",
+    "राजेद्र": "Rajendra",
+    "वसंतराव": "Vasantrao",
+    "वसंत": "Vasant",
+    "प्रदिप": "Pradip",
+    "प्रदीप": "Pradeep",
+    "शेलार": "Shelar",
+    "सुन्नाबी": "Sunnabi",
+    "सुन्न्नाबी": "Sunnabi",
+    "इस्माइल": "Ismail",
+    "बागवान": "Bagavan",
+    "ज्ञानदेव": "Dnyandev",
+    "ज्ञानेश्वर": "Dnyaneshwar",
+    "ज्ञानेश्‍वर": "Dnyaneshwar",
+    "काटे": "Kate",
+    "बागल": "Bagal",
+    "सस्ते": "Saste",
+    "देवकाते": "Devkate",
+    "चव्हाण": "Chavan",
+    "लाडकत": "Ladkat",
+    "खोमणे": "Khomane",
+    "कदम": "Kadam",
+    "साबळे": "Sabale",
+    "आडके": "Aadke",
+    "सरगर": "Sargar",
+    "ताकवणे": "Takawane",
+    "शिंदे": "Shinde",
+    "पाटील": "Patil",
+    "पवार": "Pawar",
+    "जाधव": "Jadhav",
+    "मोरे": "More",
+    "भोसले": "Bhosale",
+    "गायकवाड": "Gaikwad",
+    "जगताप": "Jagtap",
+    "हरिभाऊ": "Haribhau",
+    "खंडेराव": "Khanderao",
+    "आनंदराव": "Anandrao",
+    "विजयसिंह": "Vijaysinh",
+    "दिनकर": "Dinkar",
+    "धनंजय": "Dhananjay",
+    "सिताराम": "Sitaram",
+    "भाग्यश्री": "Bhagyashree",
+    "चंद्रकांत": "Chandrakant",
+    "संपत": "Sampat",
+    "बबन": "Baban",
+    "पोपट": "Popat",
+    "रघुनाथ": "Raghunath",
+    "गंगाराम": "Gangaram",
+    "तात्याबा": "Tatyaba",
+    "सोनाली": "Sonali",
+    "जान्हवी": "Janhavi",
+    "अशोक": "Ashok",
+    "विनोद": "Vinod",
+    "रंजना": "Ranjana",
+    "वैष्णवी": "Vaishnavi",
+    "शंभुराज": "Shambhuraj",
+    "संगीता": "Sangita",
+    "अनिल": "Anil",
+    "श्रीकांत": "Shrikant",
+    "योगेश": "Yogesh",
+    "भूपेश": "Bhupesh",
+    "भुपेश": "Bhupesh",
+    "राजेश": "Rajesh",
+    "वैभव": "Vaibhav",
+    "शोभा": "Shobha",
+    "संदीप": "Sandip",
+    "कमल": "Kamal",
+    "गोपिनाथ": "Gopinath",
+    "अंकुश": "Ankush",
+    "नरसिंग": "Narsing",
+    "प्रताप": "Pratap",
+    "सचिन": "Sachin",
+    "भरत": "Bharat",
+    "लक्ष्मण": "Laxman",
+    "विठ्ठल": "Vitthal",
+  };
+
+  const words = text.trim().split(/\s+/);
+  const resultWords = words.map((word) => {
+    if (wordOverrides[word]) {
+      return wordOverrides[word];
+    }
+    if (word.endsWith("राव") && word.length > 3) {
+      const base = word.slice(0, -3);
+      return transliterateWord(base) + "rao";
+    }
+    if (word.endsWith("भाऊ") && word.length > 3) {
+      const base = word.slice(0, -3);
+      return transliterateWord(base) + "bhau";
+    }
+    if (word.endsWith("सिंह") && word.length > 4) {
+      const base = word.slice(0, -4);
+      return transliterateWord(base) + "sinh";
+    }
+    return transliterateWord(word);
+  });
+
+  return resultWords.join(" ");
+}
+
+function transliterateWord(word: string): string {
+  const vowels: Record<string, string> = {
+    "अ": "a", "आ": "a", "इ": "i", "ई": "i", "उ": "u", "ऊ": "u",
+    "ऋ": "ri", "ए": "e", "ऐ": "ai", "ओ": "o", "औ": "au", "अं": "an", "अः": "ah",
+  };
+
+  const matras: Record<string, string> = {
+    "ा": "a", "ि": "i", "ी": "i", "ु": "u", "ू": "u",
+    "ृ": "ri", "े": "e", "ै": "ai", "ो": "o", "ौ": "au",
+    "ं": "n", "ँ": "n", "ः": "h",
+  };
+
+  const consonants: Record<string, string> = {
+    "क": "k", "ख": "kh", "ग": "g", "घ": "gh", "ङ": "ng",
+    "च": "ch", "छ": "chh", "ज": "j", "झ": "jh", "ञ": "ny",
+    "ट": "t", "ठ": "th", "ड": "d", "ढ": "dh", "ण": "n",
+    "त": "t", "थ": "th", "द": "d", "ध": "dh", "न": "n",
+    "प": "p", "फ": "ph", "ब": "b", "भ": "bh", "म": "m",
+    "य": "y", "र": "r", "ल": "l", "व": "v", "श": "sh",
+    "ष": "sh", "स": "s", "ह": "h", "ळ": "l", "क्ष": "ksh",
+    "ज्ञ": "dny", "श्र": "shr", "त्र": "tr",
+  };
+
+  let out = "";
+  const len = word.length;
+  let i = 0;
+
+  while (i < len) {
+    const ch = word[i];
+    const next = i + 1 < len ? word[i + 1] : "";
+    const nextNext = i + 2 < len ? word[i + 2] : "";
+
+    // Compound letter specials
+    if (ch === "ज" && next === "्" && nextNext === "ञ") {
+      out += "dny";
+      i += 3;
+      if (i < len && matras[word[i]]) {
+        out += matras[word[i]];
+        i++;
+      } else if (i < len && word[i] === "्") {
+        i++;
+      } else if (i < len && !isPunctuation(word[i])) {
+        out += "a";
+      }
+      continue;
+    }
+
+    if (ch === "क" && next === "्" && nextNext === "ष") {
+      out += "ksh";
+      i += 3;
+      if (i < len && matras[word[i]]) {
+        out += matras[word[i]];
+        i++;
+      } else if (i < len && word[i] === "्") {
+        i++;
+      } else if (i < len && !isPunctuation(word[i])) {
+        out += "a";
+      }
+      continue;
+    }
+
+    if (ch === "श" && next === "्" && nextNext === "र") {
+      out += "shr";
+      i += 3;
+      if (i < len && matras[word[i]]) {
+        out += matras[word[i]];
+        i++;
+      } else if (i < len && word[i] === "्") {
+        i++;
+      } else if (i < len && !isPunctuation(word[i])) {
+        out += "a";
+      }
+      continue;
+    }
+
+    if (ch === "त" && next === "्" && nextNext === "र") {
+      out += "tr";
+      i += 3;
+      if (i < len && matras[word[i]]) {
+        out += matras[word[i]];
+        i++;
+      } else if (i < len && word[i] === "्") {
+        i++;
+      } else if (i < len && !isPunctuation(word[i])) {
+        out += "a";
+      }
+      continue;
+    }
+
+    if (vowels[ch]) {
+      out += vowels[ch];
+      i++;
+      continue;
+    }
+
+    if (consonants[ch]) {
+      const c = consonants[ch];
+      i++;
+
+      if (i < len) {
+        const nextChar = word[i];
+        if (nextChar === "्") {
+          out += c;
+          i++;
+        } else if (matras[nextChar]) {
+          out += c + matras[nextChar];
+          i++;
+          if (i < len && (word[i] === "ं" || word[i] === "ँ")) {
+            const nextAfterAnusvara = i + 1 < len ? word[i + 1] : "";
+            if (["प", "फ", "ब", "भ", "म"].includes(nextAfterAnusvara)) {
+              out += "m";
+            } else {
+              out += "n";
+            }
+            i++;
+          }
+        } else if (nextChar === "ं" || nextChar === "ँ") {
+          const nextAfterAnusvara = i + 1 < len ? word[i + 1] : "";
+          if (["प", "फ", "ब", "भ", "म"].includes(nextAfterAnusvara)) {
+            out += c + "am";
+          } else {
+            out += c + "an";
+          }
+          i++;
+        } else if (nextChar === "ः") {
+          out += c + "ah";
+          i++;
+        } else if (consonants[nextChar] || vowels[nextChar]) {
+          out += c + "a";
+        } else {
+          out += c;
+        }
+      } else {
+        out += c;
+      }
+      continue;
+    }
+
+    if (matras[ch]) {
+      out += matras[ch];
+      i++;
+      continue;
+    }
+
+    out += ch;
+    i++;
+  }
+
+  if (out.length > 0) {
+    return out.charAt(0).toUpperCase() + out.slice(1);
+  }
+  return out;
+}
+
+function isPunctuation(ch: string): boolean {
+  return /[\s.,\/#!$%\^&\*;:{}=\-_`~()]/i.test(ch);
+}
+
+/**
+ * Translates farmer names / landholders into Marathi or English based on locale
+ */
+export function translateFarmerName(
+  farmerName: string | null | undefined,
+  isMarathi: boolean = true
+): string {
+  if (!farmerName) return isMarathi ? "शेतकरी" : "Farmer";
+
+  // If Marathi requested and already Devanagari, return as-is
+  if (isMarathi) {
+    if (/[\u0900-\u097F]/.test(farmerName)) {
+      return farmerName;
+    }
+    const normalized = farmerName.trim().toLowerCase();
+    if (MARATHI_FARMER_MAP[normalized]) {
+      return MARATHI_FARMER_MAP[normalized];
+    }
+    return farmerName;
+  }
+
+  // English requested
+  // If farmerName has Devanagari characters, transliterate to clean English
+  if (/[\u0900-\u097F]/.test(farmerName)) {
+    return devanagariToEnglish(farmerName);
+  }
+
+  return farmerName;
+}
+
+/**
+ * Translates unit strings into Marathi or English
+ */
+export function translateUnit(
+  unit: string | null | undefined,
+  isMarathi: boolean = true
+): string {
+  if (!unit) return isMarathi ? "क्विंटल" : "Quintal";
+  const trimmed = unit.trim();
+  const normalized = trimmed.toLowerCase();
+
+  if (isMarathi) {
+    if (MARATHI_UNIT_MAP[normalized]) {
+      return MARATHI_UNIT_MAP[normalized];
+    }
+    if (normalized.includes("quintal") || normalized.includes("qtl") || normalized.includes("क्विंटल")) return "क्विंटल";
+    if (normalized.includes("ton") || normalized.includes("tonne") || normalized.includes("टन")) return "टन";
+    if (normalized.includes("kg") || normalized.includes("kilo") || normalized.includes("किलो")) return "किलो";
+    if (normalized.includes("acre") || normalized.includes("एकर")) return "एकर";
+    if (normalized.includes("hectare") || normalized.includes("हेक्टर")) return "हेक्टर";
+    return unit;
+  }
+
+  // English requested
+  if (REVERSE_UNIT_MAP[trimmed]) {
+    return REVERSE_UNIT_MAP[trimmed];
+  }
+  if (trimmed.includes("क्विंटल") || normalized.includes("quintal") || normalized.includes("qtl")) return "Quintal";
+  if (trimmed.includes("टन") || normalized.includes("ton") || normalized.includes("tonne")) return "Tonne";
+  if (trimmed.includes("किलो") || normalized.includes("kg") || normalized.includes("kilo")) return "Kg";
+  if (trimmed.includes("हेक्टर") || trimmed.includes("हे.") || normalized.includes("hectare")) return "Hectare";
+  if (trimmed.includes("एकर") || normalized.includes("acre")) return "Acre";
+  if (trimmed.includes("डझन") || normalized.includes("dozen")) return "Dozen";
+  if (trimmed.includes("क्रेट") || normalized.includes("crate")) return "Crates";
+  if (trimmed.includes("नग") || normalized.includes("piece") || normalized.includes("nos")) return "Pieces";
+  if (trimmed.includes("पोते") || trimmed.includes("गोणी") || normalized.includes("bag")) return "Bags";
+
+  return unit;
+}
+
+/**
+ * Formats Gat number label in Marathi
+ */
+export function formatGatLabel(
+  gatNo: string | number | null | undefined,
+  isMarathi: boolean = true
+): string {
+  if (!gatNo) return isMarathi ? "गट क्रमांक" : "Gat No.";
+  return isMarathi ? `गट क्र. ${gatNo}` : `Gat No. ${gatNo}`;
+}
