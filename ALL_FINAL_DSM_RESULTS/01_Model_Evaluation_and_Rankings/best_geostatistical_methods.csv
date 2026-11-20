@@ -1,0 +1,67 @@
+Target_Property,Model_Paradigm,Model_Family,RMSE,MAE,R2,MBE_Bias,Lin_CCC,Delta_RMSE,Delta_R2,Status
+pH,OK_Spherical,Geostatistical Kriging,0.2678,0.2114,-0.0538,-0.0079,0.0045,0.0053,-0.0409,Sub-optimal / Rejected
+pH,OK_Exponential,Geostatistical Kriging,0.2632,0.2067,-0.0178,0.0253,0.0065,0.0007,-0.0049,Comparable Performance
+pH,OK_Gaussian,Geostatistical Kriging,0.2652,0.2079,-0.0336,0.0128,-0.0236,0.0027,-0.0207,Comparable Performance
+pH,OK_Linear,Geostatistical Kriging,0.27,0.2119,-0.0712,0.013,-0.0634,0.0075,-0.0583,Sub-optimal / Rejected
+pH,Universal_Kriging,Geostatistical Kriging,0.2625,0.2019,-0.0128,-0.0001,0.1161,0.0,0.0001,Comparable Performance
+pH,Simple_Kriging,Geostatistical Kriging,0.2678,0.2114,-0.0538,-0.0079,0.0045,0.0053,-0.0409,Sub-optimal / Rejected
+EC,OK_Spherical,Geostatistical Kriging,0.3534,0.2922,-0.0283,0.0257,0.0031,0.0008,-0.0047,Comparable Performance
+EC,OK_Exponential,Geostatistical Kriging,0.3527,0.2936,-0.024,0.0369,0.0206,0.0001,-0.0004,Comparable Performance
+EC,OK_Gaussian,Geostatistical Kriging,0.3514,0.2914,-0.0164,0.0305,0.0213,-0.0012,0.0072,Comparable Performance
+EC,OK_Linear,Geostatistical Kriging,0.3438,0.2785,0.0269,0.0145,0.078,-0.0088,0.0505,GENUINE IMPROVEMENT (Winner Candidate)
+EC,Universal_Kriging,Geostatistical Kriging,0.3425,0.2751,0.0344,0.0185,0.1296,-0.0101,0.058,GENUINE IMPROVEMENT (Winner Candidate)
+EC,Simple_Kriging,Geostatistical Kriging,0.3532,0.292,-0.0269,0.026,0.0044,0.0006,-0.0033,Comparable Performance
+OC,OK_Spherical,Geostatistical Kriging,0.2801,0.2165,0.2392,-0.0146,0.3539,0.0017,-0.009,Comparable Performance
+OC,OK_Exponential,Geostatistical Kriging,0.2784,0.2156,0.2482,0.0055,0.3921,0.0,0.0,Comparable Performance
+OC,OK_Gaussian,Geostatistical Kriging,0.2836,0.2173,0.2199,-0.0297,0.3106,0.0052,-0.0283,Sub-optimal / Rejected
+OC,OK_Linear,Geostatistical Kriging,0.2789,0.2144,0.2458,-0.002,0.3652,0.0005,-0.0024,Comparable Performance
+OC,Universal_Kriging,Geostatistical Kriging,0.2771,0.2116,0.2555,-0.0129,0.3914,-0.0013,0.0073,Comparable Performance
+OC,Simple_Kriging,Geostatistical Kriging,0.2801,0.2165,0.2392,-0.0146,0.3539,0.0017,-0.009,Comparable Performance
+CaCO3,OK_Spherical,Geostatistical Kriging,4.7029,3.3091,0.7846,-1.0204,0.8672,0.0,0.0,Comparable Performance
+CaCO3,OK_Exponential,Geostatistical Kriging,4.7535,3.4112,0.78,-0.9521,0.867,0.0506,-0.0046,Sub-optimal / Rejected
+CaCO3,OK_Gaussian,Geostatistical Kriging,5.529,3.7834,0.7023,-0.9814,0.8137,0.8261,-0.0823,Sub-optimal / Rejected
+CaCO3,OK_Linear,Geostatistical Kriging,5.047,3.6719,0.752,-0.7394,0.8387,0.3441,-0.0326,Sub-optimal / Rejected
+CaCO3,Universal_Kriging,Geostatistical Kriging,4.7299,3.3156,0.7822,-1.0208,0.8659,0.027,-0.0024,Sub-optimal / Rejected
+CaCO3,Simple_Kriging,Geostatistical Kriging,4.7029,3.3091,0.7846,-1.0204,0.8672,0.0,0.0,Comparable Performance
+N,OK_Spherical,Geostatistical Kriging,51.2882,40.2443,0.2108,3.4478,0.3423,0.8396,-0.0256,Sub-optimal / Rejected
+N,OK_Exponential,Geostatistical Kriging,53.7558,44.7091,0.1331,10.6441,0.236,3.3072,-0.1033,Sub-optimal / Rejected
+N,OK_Gaussian,Geostatistical Kriging,52.6402,40.3417,0.1687,1.2586,0.3338,2.1916,-0.0677,Sub-optimal / Rejected
+N,OK_Linear,Geostatistical Kriging,61.4999,52.9283,-0.1347,4.4152,-0.1145,11.0513,-0.3711,Sub-optimal / Rejected
+N,Universal_Kriging,Geostatistical Kriging,52.2423,40.6054,0.1812,3.7576,0.3172,1.7937,-0.0552,Sub-optimal / Rejected
+N,Simple_Kriging,Geostatistical Kriging,51.2882,40.2443,0.2108,3.4478,0.3423,0.8396,-0.0256,Sub-optimal / Rejected
+P,OK_Spherical,Geostatistical Kriging,15.5794,12.7685,-0.0915,1.2715,-0.0248,-0.0017,0.0003,Comparable Performance
+P,OK_Exponential,Geostatistical Kriging,21.1429,17.6098,-1.0103,6.6557,-0.263,5.5618,-0.9185,Sub-optimal / Rejected
+P,OK_Gaussian,Geostatistical Kriging,15.8801,12.8959,-0.1341,1.6168,-0.0142,0.299,-0.0423,Sub-optimal / Rejected
+P,OK_Linear,Geostatistical Kriging,15.9905,13.3689,-0.1499,1.1537,-0.1228,0.4094,-0.0581,Sub-optimal / Rejected
+P,Universal_Kriging,Geostatistical Kriging,16.0998,13.2686,-0.1657,1.8785,-0.0769,0.5187,-0.0739,Sub-optimal / Rejected
+P,Simple_Kriging,Geostatistical Kriging,15.5798,12.7691,-0.0916,1.2714,-0.0248,-0.0013,0.0002,Comparable Performance
+K,OK_Spherical,Geostatistical Kriging,318.8879,243.8815,0.303,6.8585,0.4426,0.0,0.0,Comparable Performance
+K,OK_Exponential,Geostatistical Kriging,338.306,252.0406,0.2156,-2.3037,0.3935,19.4181,-0.0874,Sub-optimal / Rejected
+K,OK_Gaussian,Geostatistical Kriging,330.4943,260.9826,0.2514,-6.1472,0.3557,11.6064,-0.0516,Sub-optimal / Rejected
+K,OK_Linear,Geostatistical Kriging,324.464,252.3427,0.2785,3.8691,0.3962,5.5761,-0.0245,Sub-optimal / Rejected
+K,Universal_Kriging,Geostatistical Kriging,320.624,244.4128,0.2954,3.4198,0.4673,1.7361,-0.0076,Sub-optimal / Rejected
+K,Simple_Kriging,Geostatistical Kriging,318.8879,243.8815,0.303,6.8585,0.4426,0.0,0.0,Comparable Performance
+S,OK_Spherical,Geostatistical Kriging,28.5951,20.2992,-0.2407,-4.3058,-0.11,0.0,0.0,Comparable Performance
+S,OK_Exponential,Geostatistical Kriging,28.8362,20.4662,-0.2617,-4.344,-0.1164,0.2411,-0.021,Sub-optimal / Rejected
+S,OK_Gaussian,Geostatistical Kriging,153.9153,82.4625,-34.9455,71.8542,0.0892,125.3202,-34.7048,Sub-optimal / Rejected
+S,OK_Linear,Geostatistical Kriging,28.2113,20.9051,-0.2076,-2.922,-0.1243,-0.3838,0.0331,GENUINE IMPROVEMENT (Winner Candidate)
+S,Universal_Kriging,Geostatistical Kriging,29.047,20.7751,-0.2802,-4.3814,-0.1388,0.4519,-0.0395,Sub-optimal / Rejected
+S,Simple_Kriging,Geostatistical Kriging,28.5947,20.2988,-0.2407,-4.3061,-0.11,-0.0004,0.0,Comparable Performance
+Sand,OK_Spherical,Geostatistical Kriging,6.127,4.8389,0.1484,-0.3828,0.3343,0.562,-0.1491,Sub-optimal / Rejected
+Sand,OK_Exponential,Geostatistical Kriging,5.7468,4.5457,0.2508,-0.2939,0.4904,0.1818,-0.0467,Sub-optimal / Rejected
+Sand,OK_Gaussian,Geostatistical Kriging,5.565,4.4082,0.2975,0.465,0.5069,0.0,0.0,Comparable Performance
+Sand,OK_Linear,Geostatistical Kriging,6.7939,5.6342,-0.047,-0.0751,0.0069,1.2289,-0.3445,Sub-optimal / Rejected
+Sand,Universal_Kriging,Geostatistical Kriging,6.1224,4.843,0.1497,-0.4232,0.3432,0.5574,-0.1478,Sub-optimal / Rejected
+Sand,Simple_Kriging,Geostatistical Kriging,6.127,4.8389,0.1484,-0.3828,0.3343,0.562,-0.1491,Sub-optimal / Rejected
+Silt,OK_Spherical,Geostatistical Kriging,5.7805,4.573,-0.265,-0.6731,-0.0976,1.4436,-0.5529,Sub-optimal / Rejected
+Silt,OK_Exponential,Geostatistical Kriging,6.184,4.9505,-0.4478,-0.7915,-0.1184,1.8471,-0.7357,Sub-optimal / Rejected
+Silt,OK_Gaussian,Geostatistical Kriging,39.2899,25.0173,-57.4402,12.1644,-0.0159,34.953,-57.7281,Sub-optimal / Rejected
+Silt,OK_Linear,Geostatistical Kriging,5.3886,4.2001,-0.0992,-0.0329,-0.0919,1.0517,-0.3871,Sub-optimal / Rejected
+Silt,Universal_Kriging,Geostatistical Kriging,5.8046,4.6183,-0.2755,-0.6871,-0.0851,1.4677,-0.5634,Sub-optimal / Rejected
+Silt,Simple_Kriging,Geostatistical Kriging,5.7805,4.573,-0.265,-0.6731,-0.0976,1.4436,-0.5529,Sub-optimal / Rejected
+Clay,OK_Spherical,Geostatistical Kriging,9.2311,7.4612,0.1227,0.7792,0.3254,0.9185,-0.1659,Sub-optimal / Rejected
+Clay,OK_Exponential,Geostatistical Kriging,8.6466,7.1094,0.2303,0.3884,0.4934,0.334,-0.0583,Sub-optimal / Rejected
+Clay,OK_Gaussian,Geostatistical Kriging,10.2386,7.4327,-0.0792,-0.0709,0.3375,1.926,-0.3678,Sub-optimal / Rejected
+Clay,OK_Linear,Geostatistical Kriging,10.2518,7.774,-0.082,0.6179,-0.0097,1.9392,-0.3706,Sub-optimal / Rejected
+Clay,Universal_Kriging,Geostatistical Kriging,9.2625,7.4845,0.1167,0.7705,0.3258,0.9499,-0.1719,Sub-optimal / Rejected
+Clay,Simple_Kriging,Geostatistical Kriging,9.2311,7.4612,0.1227,0.7792,0.3254,0.9185,-0.1659,Sub-optimal / Rejected

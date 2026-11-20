@@ -1,0 +1,25 @@
+Variable_Name,Role,Missing_Count,Missing_Pct,Missing_Mechanism,Imputation_Action
+pH,Target Property (y),1,0.83,MAR (Granulometry analyzed on STR samples; chemical nutrients analyzed across all KVK),Target-specific filtering: retain only genuine lab observations; never impute target y
+EC,Target Property (y),1,0.83,MAR (Granulometry analyzed on STR samples; chemical nutrients analyzed across all KVK),Target-specific filtering: retain only genuine lab observations; never impute target y
+OC,Target Property (y),1,0.83,MAR (Granulometry analyzed on STR samples; chemical nutrients analyzed across all KVK),Target-specific filtering: retain only genuine lab observations; never impute target y
+N,Target Property (y),1,0.83,MAR (Granulometry analyzed on STR samples; chemical nutrients analyzed across all KVK),Target-specific filtering: retain only genuine lab observations; never impute target y
+P,Target Property (y),1,0.83,MAR (Granulometry analyzed on STR samples; chemical nutrients analyzed across all KVK),Target-specific filtering: retain only genuine lab observations; never impute target y
+K,Target Property (y),1,0.83,MAR (Granulometry analyzed on STR samples; chemical nutrients analyzed across all KVK),Target-specific filtering: retain only genuine lab observations; never impute target y
+CaCO3,Target Property (y),1,0.83,MAR (Granulometry analyzed on STR samples; chemical nutrients analyzed across all KVK),Target-specific filtering: retain only genuine lab observations; never impute target y
+S,Target Property (y),8,6.67,MAR (Granulometry analyzed on STR samples; chemical nutrients analyzed across all KVK),Target-specific filtering: retain only genuine lab observations; never impute target y
+Fe,Excluded Soil Target / Target-Derived,1,0.83,Covariate Missingness,Fold-internal imputation / forward pass
+Mn,Excluded Soil Target / Target-Derived,1,0.83,Covariate Missingness,Fold-internal imputation / forward pass
+Zn,Excluded Soil Target / Target-Derived,11,9.17,Covariate Missingness,Fold-internal imputation / forward pass
+Cu,Excluded Soil Target / Target-Derived,1,0.83,Covariate Missingness,Fold-internal imputation / forward pass
+Sand,Target Property (y),48,40.0,MAR (Granulometry analyzed on STR samples; chemical nutrients analyzed across all KVK),Target-specific filtering: retain only genuine lab observations; never impute target y
+Silt,Target Property (y),48,40.0,MAR (Granulometry analyzed on STR samples; chemical nutrients analyzed across all KVK),Target-specific filtering: retain only genuine lab observations; never impute target y
+Clay,Target Property (y),48,40.0,MAR (Granulometry analyzed on STR samples; chemical nutrients analyzed across all KVK),Target-specific filtering: retain only genuine lab observations; never impute target y
+Ex_Na,Excluded Soil Target / Target-Derived,66,55.0,Specialized lab test not conducted across all sheets,Excluded from prediction targets and predictors to prevent data/target leakage
+B,Excluded Soil Target / Target-Derived,73,60.83,Specialized lab test not conducted across all sheets,Excluded from prediction targets and predictors to prevent data/target leakage
+Moist_BD,Excluded Soil Target / Target-Derived,55,45.83,Specialized lab test not conducted across all sheets,Excluded from prediction targets and predictors to prevent data/target leakage
+SOM,Excluded Soil Target / Target-Derived,55,45.83,Specialized lab test not conducted across all sheets,Excluded from prediction targets and predictors to prevent data/target leakage
+Total_Carbon,Excluded Soil Target / Target-Derived,55,45.83,Specialized lab test not conducted across all sheets,Excluded from prediction targets and predictors to prevent data/target leakage
+Textural_Class,Excluded Soil Target / Target-Derived,48,40.0,Covariate Missingness,Fold-internal imputation / forward pass
+NH4,Excluded Soil Target / Target-Derived,55,45.83,Specialized lab test not conducted across all sheets,Excluded from prediction targets and predictors to prevent data/target leakage
+NO3,Excluded Soil Target / Target-Derived,55,45.83,Specialized lab test not conducted across all sheets,Excluded from prediction targets and predictors to prevent data/target leakage
+index_right,Sample Metadata / Identifier,9,7.5,Artifact,Spatial join artifact column; excluded from model training

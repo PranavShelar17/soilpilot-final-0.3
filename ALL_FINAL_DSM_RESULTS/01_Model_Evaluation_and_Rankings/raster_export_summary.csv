@@ -1,0 +1,12 @@
+Target_Property,Selected_Model,Algorithm_Family,Grid_Min,Grid_Mean,Grid_Max,Mean_Uncertainty,UTM_Raster,WGS84_Raster
+pH,Certified Baseline: Ordinary Kriging (Spherical),Certified Baseline,7.955,8.226,8.605,0.247,outputs/rasters/final_best_predictions/utm32643\pH_predicted_15m.tif,outputs/rasters/final_best_predictions/wgs84\pH_predicted_wgs84.tif
+EC,Universal_Kriging,Geostatistical Kriging,0.358,0.614,0.907,0.368,outputs/rasters/final_best_predictions/utm32643\EC_predicted_15m.tif,outputs/rasters/final_best_predictions/wgs84\EC_predicted_wgs84.tif
+OC,Certified Baseline: Ordinary Kriging (Exponential),Certified Baseline,0.498,0.615,0.899,0.32,outputs/rasters/final_best_predictions/utm32643\OC_predicted_15m.tif,outputs/rasters/final_best_predictions/wgs84\OC_predicted_wgs84.tif
+CaCO3,Certified Baseline: Ordinary Kriging (Spherical),Geostatistical Kriging,1.907,7.267,27.266,7.003,outputs/rasters/final_best_predictions/utm32643\CaCO3_predicted_15m.tif,outputs/rasters/final_best_predictions/wgs84\CaCO3_predicted_wgs84.tif
+N,KNN_Distance,Machine Learning,73.807,204.628,285.706,49.821,outputs/rasters/final_best_predictions/utm32643\N_predicted_15m.tif,outputs/rasters/final_best_predictions/wgs84\N_predicted_wgs84.tif
+P,SVR_RBF,Machine Learning (Kernel SVR),16.318,25.836,34.849,14.673,outputs/rasters/final_best_predictions/utm32643\P_predicted_15m.tif,outputs/rasters/final_best_predictions/wgs84\P_predicted_wgs84.tif
+K,Certified Baseline: Ordinary Kriging (Spherical),Certified Baseline,434.96,523.357,866.97,381.63,outputs/rasters/final_best_predictions/utm32643\K_predicted_15m.tif,outputs/rasters/final_best_predictions/wgs84\K_predicted_wgs84.tif
+S,Gaussian_Process,Machine Learning,19.059,33.594,48.351,25.423,outputs/rasters/final_best_predictions/utm32643\S_predicted_15m.tif,outputs/rasters/final_best_predictions/wgs84\S_predicted_wgs84.tif
+Sand,Certified Baseline: Ordinary Kriging (Gaussian),Certified Baseline,16.917,21.03,33.313,5.565,outputs/rasters/final_best_predictions/utm32643\Sand_predicted_15m.tif,outputs/rasters/final_best_predictions/wgs84\Sand_predicted_wgs84.tif
+Silt,Certified Baseline: Random Forest,Certified Baseline,2.235,10.447,16.403,4.337,outputs/rasters/final_best_predictions/utm32643\Silt_predicted_15m.tif,outputs/rasters/final_best_predictions/wgs84\Silt_predicted_wgs84.tif
+Clay,Certified Baseline: Regression Kriging,Certified Baseline,50.932,68.523,77.713,8.313,outputs/rasters/final_best_predictions/utm32643\Clay_predicted_15m.tif,outputs/rasters/final_best_predictions/wgs84\Clay_predicted_wgs84.tif

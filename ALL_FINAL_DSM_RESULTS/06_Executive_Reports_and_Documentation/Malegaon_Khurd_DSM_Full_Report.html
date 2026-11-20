@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Malegaon Khurd Digital Soil Mapping (DSM) Comprehensive Technical Report</title>
+
+<!-- KaTeX support -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}], throwOnError: false});"></script>
+
+<!-- Mermaid support -->
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+</script>
+
+<style>
+  @page {
+    size: A4;
+    margin: 14mm 12mm 14mm 12mm;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 9pt;
+    line-height: 1.48;
+    color: #1e293b;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Institutional Header Banner */
+  .report-header-banner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    color: #ffffff;
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .org-subheading {
+    font-size: 8.5pt;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    color: #93c5fd;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .report-main-title {
+    font-size: 16.5pt;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+
+  .report-tagline {
+    font-size: 9pt;
+    color: #e2e8f0;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  .meta-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 16px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 8pt;
+  }
+
+  .meta-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+    padding-bottom: 2px;
+  }
+
+  .meta-label {
+    font-weight: 600;
+    color: #93c5fd;
+  }
+
+  .meta-val {
+    font-weight: 500;
+    color: #ffffff;
+    text-align: right;
+  }
+
+  /* Headings */
+  h1 {
+    font-size: 15pt;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.25;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-size: 12.5pt;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-top: 22px;
+    margin-bottom: 8px;
+    border-bottom: 1.5px solid #cbd5e1;
+    padding-bottom: 4px;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  h3 {
+    font-size: 10.2pt;
+    font-weight: 700;
+    color: #0f2942;
+    margin-top: 14px;
+    margin-bottom: 4px;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  h4 {
+    font-size: 9.2pt;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  p, li {
+    text-align: justify;
+    margin-top: 3px;
+    margin-bottom: 5px;
+  }
+
+  ul, ol {
+    margin-top: 3px;
+    margin-bottom: 6px;
+    padding-left: 18px;
+  }
+
+  li {
+    margin-bottom: 2px;
+  }
+
+  strong {
+    color: #0f172a;
+  }
+
+  code {
+    font-family: "Cascadia Code", Consolas, "Courier New", monospace;
+    font-size: 8pt;
+    background-color: #f1f5f9;
+    padding: 1px 4px;
+    border-radius: 3px;
+    border: 1px solid #e2e8f0;
+    color: #0369a1;
+  }
+
+  pre {
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    padding: 8px;
+    overflow-x: auto;
+    font-size: 7.8pt;
+    line-height: 1.35;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Standard Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 14px 0;
+    font-size: 8pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  th {
+    background-color: #0f172a;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 4px 6px;
+    border: 1px solid #334155;
+    font-size: 8pt;
+  }
+
+  td {
+    padding: 4px 6px;
+    border: 1px solid #cbd5e1;
+    vertical-align: middle;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #f8fafc;
+  }
+
+  /* Specialized 16-Column Benchmark Table */
+  .table-container-benchmark {
+    width: 100%;
+    margin: 12px 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  table.benchmark-table {
+    font-size: 6.8pt;
+    line-height: 1.25;
+  }
+
+  table.benchmark-table th {
+    font-size: 6.8pt;
+    padding: 3px 3px;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  table.benchmark-table td {
+    padding: 3px 3px;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  table.benchmark-table td:first-child {
+    text-align: left;
+    font-weight: 600;
+  }
+
+  table.benchmark-table td:nth-child(2) {
+    text-align: left;
+  }
+
+  /* Callouts & Quotes */
+  blockquote {
+    border-left: 3.5px solid #2563eb;
+    background-color: #eff6ff;
+    padding: 6px 10px;
+    margin: 8px 0;
+    font-size: 8.5pt;
+    color: #1e3a8a;
+    border-radius: 0 4px 4px 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Figures */
+  .figure-box {
+    margin: 12px 0;
+    padding: 6px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    text-align: center;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .figure-box img {
+    max-width: 96%;
+    max-height: 480px;
+    height: auto;
+    border-radius: 3px;
+  }
+
+  .figure-caption {
+    margin-top: 5px;
+    font-size: 8.2pt;
+    font-weight: 700;
+    color: #334155;
+  }
+
+  /* Mermaid Diagrams */
+  .mermaid {
+    text-align: center;
+    margin: 12px auto;
+    max-width: 95%;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Running Footer */
+  .running-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 16px;
+    font-size: 7.5pt;
+    color: #64748b;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 3px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+  }
+
+  /* Print specific rules */
+  @media print {
+    body {
+      color: #000000;
+    }
+    a {
+      color: #0f172a;
+      text-decoration: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="report-header-banner">
+    <div class="org-subheading">KRISHI VIGYAN KENDRA (KVK) & AGRICULTURAL DEVELOPMENT TRUST (ADT), BARAMATI</div>
+    <div class="report-main-title">Digital Soil Mapping & Cadastral-Scale Soil Fertility Prediction Report</div>
+    <div class="report-tagline">Advanced Geospatial & Machine Learning Intelligence for Automated Zonal Soil Health Diagnostics</div>
+    
+    <div class="meta-card-grid">
+        <div class="meta-item">
+            <span class="meta-label">Village / Location:</span>
+            <span class="meta-val">Malegaon Khurd, Tal. Baramati, Dist. Pune (MH)</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Geographic Coordinates:</span>
+            <span class="meta-val">18.133°N - 18.170°N, 74.493°E - 74.536°E</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Cadastral Parcels:</span>
+            <span class="meta-val">237 Placemarks → 216 Dissolved Gat Parcels</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Total Surveyed Area:</span>
+            <span class="meta-val">1,117.52 Hectares (1,076.13 ha reported block)</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Ground Stations:</span>
+            <span class="meta-val">119 Analyzed Lab Stations across 48 Gats</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Prediction Coverage:</span>
+            <span class="meta-val">168 Unsampled Gats (49,998 Grid Nodes at 15m)</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Modeling Framework:</span>
+            <span class="meta-val">Constrained Convex Stacking Super Learner</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Validation Protocol:</span>
+            <span class="meta-val">Leave-One-Gat-Out CV (Zero Spatial Data Leakage)</span>
+        </div>
+    </div>
+</div>
+
+<h2>1. Executive Summary &amp; Research Objectives</h2>
+<h3>1.1 Research Background</h3>
+<p>In the semi-arid rain-shadow belt of the Western Deccan Plateau (Maharashtra, India), agricultural sustainability is intrinsically linked to the fertility, moisture retention, and mineral dynamics of deep basaltic black soils (<strong>Vertisols</strong> and associated vertic intergrades). In <strong>Malegaon Khurd</strong> (Baramati taluka), intensive cultivation of cash crops—predominantly sugarcane (<em>Saccharum officinarum</em>), pome fruit, fodder, chickpea, and winter vegetables—has escalated over recent decades. This intensification has introduced severe agronomic imbalances:<br />
+- Unregulated, excessive application of chemical nitrogenous fertilizers (urea) causing subsoil nitrate accumulation.<br />
+- Pockets of extreme potassium ($K$) buildup alongside severe localized deficiency.<br />
+- Micronutrient mining (particularly Zinc, Iron, and Manganese) exacerbated by high free calcium carbonate ($\text{CaCO}_3$) alkaline regimes.<br />
+- Injudicious flood and canal irrigation inducing localized waterlogging and secondary sodification.</p>
+<p>Traditional soil testing relying on manual composite auger sampling across every cadastral land parcel is economically and logistically unfeasible. Prior to this research, certified soil testing existed for only <strong>48 cadastral Gat parcels</strong>, leaving <strong>168 parcels (nearly 78% of the village area)</strong> completely unmeasured.</p>
+<h3>1.2 Objectives of Digital Soil Mapping</h3>
+<p>This research designs, benchmarks, and operationalizes an end-to-end, cadastral-scale <strong>Digital Soil Mapping (DSM)</strong> framework tailored to Indian agrarian parcel systems. The principal objectives are:<br />
+1. <strong>Multi-Source Data Ingestion &amp; Geochemical Harmonization</strong>: Integrate heterogeneous laboratory datasets from the Agricultural Development Trust (ADT) Soil Testing Laboratory and Krishi Vigyan Kendra (KVK) Baramati, enforcing cell-by-cell QA/QC protocols.<br />
+2. <strong>Cadastral Boundary Reparation</strong>: Repair schema namespace corruptions, rectify topology, and dissolve 237 spatial placemarks into 216 discrete agricultural revenue Gat parcels.<br />
+3. <strong>Four-Engine Algorithmic Benchmarking</strong>: Formulate, fit, and benchmark four competitive predictive spatial paradigms across 15 soil properties:<br />
+   - <em>Engine 1</em>: Trans-Gaussian Inverse Distance Weighting (IDW)<br />
+   - <em>Engine 2</em>: Geostatistical Ordinary Kriging (Spherical, Exponential, and Gaussian)<br />
+   - <em>Engine 3</em>: Earth Observation Machine Learning (Random Forest, Extra Trees, XGBoost)<br />
+   - <em>Engine 4</em>: Feature-Enriched Regression Kriging<br />
+4. <strong>Constrained Convex Meta-Ensemble (Stacking Super Learner)</strong>: Formulate a quadratic programming meta-learner that blends base model predictions under non-negativity and convex unity constraints.<br />
+5. <strong>Spatial Independence via Leave-One-Gat-Out Cross-Validation (LOGO-CV)</strong>: Eliminate within-parcel spatial data leakage, ensuring that reported accuracy reflects true out-of-sample performance on unsampled farm parcels.<br />
+6. <strong>Zonal Parcel Aggregation &amp; High-Resolution Rasters</strong>: Produce continuous 50 m continuous raster surfaces and evaluate a regular <strong>15 m × 15 m interior grid (49,998 discrete evaluation points)</strong> to calculate zonal parcel statistics (mean, min, max, uncertainty) across all 216 Gats.<br />
+7. <strong>Production Field Deliverables</strong>: Deploy automated multi-sheet Excel workbooks, interactive Folium Web GIS applications, and Google Earth KML files with embedded metadata for direct field adoption.</p>
+<h3>1.3 Study Area and Project Scope</h3>
+<ul>
+<li><strong>Location</strong>: Malegaon Khurd, situated along the Nira river canal basin, Baramati Taluka, Pune District, Maharashtra.</li>
+<li><strong>Topography</strong>: Undulating basaltic plateau sloping gently from upper weathered rocky ridges ($572\text{ m MSL}$) northward and eastward toward alluvial river floodplains ($552\text{ m MSL}$).</li>
+<li><strong>Cadastral Coverage</strong>: 237 cadastral placemarks dissolving into <strong>216 unique Gat parcels</strong>, spanning a total surveyed cadastral area of <strong>$1,117.52\text{ hectares}$</strong> (nominal reported cadastral block: approximately $1,076.13\text{ ha}$).</li>
+<li><strong>Primary Laboratory Stations</strong>: <strong>117 to 119 fully analyzed georeferenced stations</strong> (total 120 point records including an unanalyzed target farmer validation station).</li>
+<li><strong>Target Properties (15 Parameters)</strong>:</li>
+<li><em>Macro-Chemical &amp; Physical Foundation</em>: $\text{pH}$ (1:2.5 soil-water suspension), Electrical Conductivity ($\text{EC}$, $\text{dS m}^{-1}$), Organic Carbon ($\text{OC}$, $\%$), Calcium Carbonate ($\text{CaCO}_3$, $\%$).</li>
+<li><em>Primary &amp; Secondary Nutrients</em>: Available Nitrogen ($\text{N}$, $\text{kg ha}^{-1}$), Available Phosphorus ($\text{P}$, $\text{kg ha}^{-1}$), Available Potassium ($\text{K}$, $\text{kg ha}^{-1}$), Available Sulfur ($\text{S}$, $\text{mg kg}^{-1}$).</li>
+<li><em>DTPA-Extractable Micronutrients</em>: Iron ($\text{Fe}$, $\text{mg kg}^{-1}$), Manganese ($\text{Mn}$, $\text{mg kg}^{-1}$), Zinc ($\text{Zn}$, $\text{mg kg}^{-1}$), Copper ($\text{Cu}$, $\text{mg kg}^{-1}$).</li>
+<li><em>Soil Mechanical Granulometry</em>: Sand ($\%$), Silt ($\%$), Clay ($\%$).</li>
+</ul>
+<h3>1.4 Key Research Outcomes</h3>
+<ul>
+<li><strong>Zero Spatial Leakage</strong>: Strict LOGO-CV validation demonstrated that conventional random K-fold cross-validation inflates model accuracy by $25\%$ to $60\%$; parcel-based blocking reflects genuine field accuracy.</li>
+<li><strong>Foundational Chemical &amp; Physical Precision</strong>: Soil $\text{pH}$ is predicted within $\pm 0.21\text{ units}$ ($97.4\%$ relative accuracy); Clay content within $\pm 6.54\%$ ($90.4\%$ accuracy); and $\text{CaCO}_3$ achieved $R^2 = +0.679$.</li>
+<li><strong>Agronomic Nitrogen Budgeting</strong>: Available Nitrogen achieved an out-of-sample error of $\pm 38.65\text{ kg ha}^{-1}$ ($80.1\%$ relative accuracy), aligning perfectly with the $45\text{ kg}$ commercial urea split-dose increment.</li>
+<li><strong>Economic Value Proposition</strong>: The digital pipeline delivers actionable baseline recommendations for all 168 unsampled parcels while directing future ground-truthing to the <strong>top 10 high-uncertainty Gats</strong>, reducing village soil testing expenditure by over <strong>$75\%$</strong>.</li>
+</ul>
+<hr />
+<h2>2. System Architecture &amp; Workflow Pipeline</h2>
+<h3>2.1 Simplified High-Level System Architecture</h3>
+<div class="mermaid">flowchart TD
+    subgraph INGEST ["Multi-Source Ingestion & QA/QC"]
+        D1["STR_updated.xlsx<br/>(65 Samples)"]
+        D2["Docx Lab Report<br/>(100% Verification)"]
+        D3["Copy of KVK Soil data.xlsx<br/>(Sheet1: 14 Analyzed + 1 Target)"]
+        D4["Copy of KVK Soil data.xlsx<br/>(Sheet5: 40 Transposed Samples)"]
+        D5["Gat_new_malegankh.kml<br/>(237 Placemarks)"]
+        D1 & D2 & D3 & D4 --> HARM["Geochemical Harmonization & Outlier Tagging"]
+        D5 --> TOPO["XML Repair & Multi-Polygon Dissolve"]
+    end
+
+    subgraph ENGINE ["Spatial & Modeling Engine"]
+        HARM --> PTS["data/master_soil_samples.csv<br/>(120 Points)"]
+        TOPO --> GPKG["data/gat_boundaries.gpkg<br/>(216 Gats)"]
+        PTS & GPKG --> FEAT["Spatial Feature Engineering<br/>• UTM 43N Metric Project<br/>• 15m Grid (49,998 pts)<br/>• Proximity & Spatial Lag<br/>• Sentinel-2 & DEM Covariates"]
+        FEAT --> BENCH["LOGO-CV Benchmarking<br/>• Engine 1: Trans-Gaussian IDW<br/>• Engine 2: Ordinary Kriging<br/>• Engine 3: Earth Obs ML (RF/XGB)<br/>• Engine 4: Regression Kriging"]
+        BENCH --> META["Constrained Convex Stacking Super Learner"]
+    end
+
+    subgraph FIELD ["Cadastral Zonal Aggregation & Deliverables"]
+        META --> ZONAL["15m Interior Grid Prediction<br/>& Zonal Aggregation (Mean, Min, Max, Uncertainty)"]
+        ZONAL --> OUT1["Multi-Sheet Excel Workbook<br/>(Malegaon_Khurd_Gat_Soil_Predictions.xlsx)"]
+        ZONAL --> OUT2["Interactive Folium Web GIS Map<br/>(malegaon_soil_map.html)"]
+        ZONAL --> OUT3["Enriched Google Earth Layer<br/>(gat_soil_predictions.kml)"]
+        BENCH --> OUT4["Full CV Benchmark Metrics<br/>(cv_benchmark_metrics.csv)"]
+    end
+</div>
+<h3>2.2 Comprehensive Technical Workflow Pipeline</h3>
+<p>The execution architecture spans four distinct, auditable phases:</p>
+<h4>Phase 1: Multi-Source Input Ingestion &amp; Cadastral Reconciliation</h4>
+<ol>
+<li><strong>STR and Word Cross-Verification</strong>: <code>STR_updated.xlsx</code> was parsed starting at header index 3. A cell-by-cell programmatic check against <code>Baramati Soil Analysis 1.docx</code> verified that <code>Sand (%)</code>, <code>Silt (%)</code>, <code>Clay (%)</code>, <code>Textural Class</code>, <code>NH4+ (mg/kg)</code>, and <code>NO3- (mg/kg)</code> matched across all 65 rows with zero error ($0.0000\text{ discrepancy}$).</li>
+<li><strong>KVK Sheet1 Vertical Block Parsing</strong>: Addressed disconnected horizontal blocks where headers in row 4 lacked data while full analytical results were recorded in row 25. Deduplicated records by <code>(Sample_ID, Lat, Lon)</code> to extract 14 complete analytical records plus 1 unanalyzed target coordinate for <code>Chandrakant Eknath kale</code> (Lat: <code>18.150935</code>, Lon: <code>74.521309</code>).</li>
+<li><strong>KVK Sheet5 Transposition &amp; Micronutrient Mapping</strong>: 40 transposed columns were parsed. Checked the parameter reported as <code>Magnesium</code> against soil science literature; verified that values ($0.04$–$1.17\text{ mg kg}^{-1}$) represent Manganese ($\text{Mn}$) micronutrient concentrations rather than exchangeable Magnesium ($\text{Mg}$).</li>
+<li><strong>Cadastral XML Reparation</strong>: Injected <code>xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"</code> to eliminate libkml schema parsing errors, grouped 17 unassigned polygons into <code>Gat Null</code>, and dissolved fragmented placemarks into <strong>216 unique Gat parcel polygons</strong> covering $1,117.52\text{ ha}$.</li>
+<li><strong>Quality Control Ledger</strong>: Compiled all 120 points into <a href="file:///d:/14%20nov%20soil%20prediction/data/master_soil_samples.csv"><code>data/master_soil_samples.csv</code></a>, flagging extreme outliers ($K > 1200\text{ kg ha}^{-1}$ or $< 25\text{ kg ha}^{-1}$) in a non-destructive <code>qc_flag</code> column (104 clean, 16 flagged).</li>
+</ol>
+<h4>Phase 2: Four Predictive Engines</h4>
+<ol>
+<li><strong>Engine 1 (Trans-Gaussian IDW)</strong>: Spatial interpolation using inverse Euclidean distance weighting with a Box-Cox normalization transform to preserve non-negativity.</li>
+<li><strong>Engine 2 (Geostatistical Ordinary Kriging)</strong>: Semivariance modeling evaluating Spherical, Exponential, and Gaussian theoretical curves with Lagrange multiplier optimization.</li>
+<li><strong>Engine 3 (Earth Observation Machine Learning)</strong>: Random Forest, Extra Trees, and Gradient Boosted Decision Trees (XGBoost) trained on 18 spatial, geometric, topographic, and satellite spectral indices.</li>
+<li><strong>Engine 4 (Feature-Enriched Regression Kriging)</strong>: Hybrid framework combining non-linear machine learning macro-trends with spatial kriging of localized residuals.</li>
+</ol>
+<h4>Phase 3: Stacking Super Learner</h4>
+<p>A quadratic programming meta-learner solves a constrained convex optimization problem to determine the optimal non-negative blending weights for each soil parameter:<br />
+$$\min_{\mathbf{w}} \|\mathbf{y} - \sum_{m=1}^M w_m \hat{\mathbf{y}}_m\|_2^2 \quad \text{subject to} \quad w_m \ge 0, \quad \sum_{m=1}^M w_m = 1$$</p>
+<h4>Phase 4: Field Deliverables</h4>
+<p>Automated generation and validation of four core production assets:<br />
+- Publication-grade 4-sheet Excel report with styled headers and frozen panes.<br />
+- Interactive Folium Web GIS application with choropleth property toggles, satellite basemaps, and station popups.<br />
+- Enriched Google Earth KML file with embedded HTML profiles and <code>&lt;ExtendedData&gt;</code> tags.<br />
+- Detailed Leave-One-Gat-Out validation matrix across all 75 tested configurations.</p>
+<hr />
+<h2>3. Mathematical Formulation of the Modeling Paradigms</h2>
+<pre><code>╔═══════════════════════════════════════════════════════════════════════════════╗
+║                      PREDICTIVE MODELING FRAMEWORK                            ║
+╠═══════════════════════════════════════════════════════════════════════════════╣
+║  Engine 1: Trans-Gaussian Inverse Distance Weighting (IDW)                    ║
+║  Engine 2: Geostatistical Ordinary Kriging (Spherical, Exponential, Gaussian) ║
+║  Engine 3: Earth Observation Machine Learning (Random Forest &amp; XGBoost)       ║
+║  Engine 4: Feature-Enriched Regression Kriging (ML Trend + Residual Kriging)  ║
+║  Meta-Engine: Constrained Convex Stacking Super Learner                       ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+</code></pre>
+<h3>3.1 Trans-Gaussian Inverse Distance Weighting (IDW)</h3>
+<p>Standard IDW directly weights neighboring observations based on distance:<br />
+$$\hat{Z}_{\text{IDW}}(x_0) = \sum_{i=1}^n \lambda_i Z(x_i), \quad \text{where} \quad \lambda_i = \frac{d(x_0, x_i)^{-p}}{\sum_{j=1}^n d(x_0, x_j)^{-p}}$$<br />
+where $d(x_0, x_i)$ is the Euclidean distance in UTM Zone 43N metric space, and $p \ge 1$ is the power exponent (optimized across $p \in [1.5, 3.0]$).</p>
+<p>To eliminate non-physical negative estimates and accommodate heavily skewed nutrient distributions (e.g., $K$, $\text{EC}$, $P$), the observation space is mapped via a Trans-Gaussian Box-Cox transformation:<br />
+$$\psi(Z) = \begin{cases} \frac{Z^\lambda - 1}{\lambda}, & \lambda \neq 0 \\ \ln(Z), & \lambda = 0 \end{cases}$$<br />
+The IDW interpolation is performed in transformed space $\hat{\psi}(x_0)$, and back-transformed using a second-order Laurent correction to eliminate back-transformation bias:<br />
+$$\hat{Z}_{\text{corrected}}(x_0) = \psi^{-1}\left(\hat{\psi}(x_0)\right) + \frac{1}{2} \sigma_{\psi}^2 \frac{d^2 \psi^{-1}}{d \psi^2}\Big|_{\hat{\psi}(x_0)}$$</p>
+<h3>3.2 Geostatistical Ordinary Kriging</h3>
+<h4>3.2.1 The Experimental Semivariogram</h4>
+<p>Spatial autocorrelation is characterized through Matheron's classical semivariance estimator:<br />
+$$\hat{\gamma}(h) = \frac{1}{2 N(h)} \sum_{i=1}^{N(h)} \left[ Z(x_i) - Z(x_i + h) \right]^2$$<br />
+where $N(h)$ is the count of sample pairs separated by lag distance vector $h \pm \Delta h$.</p>
+<h4>3.2.2 Theoretical Variogram Models</h4>
+<p>Three continuous mathematical variogram functions were fitted against experimental points using weighted non-linear least squares:<br />
+1. <strong>Spherical Model</strong>:<br />
+   $$\gamma_{\text{sph}}(h) = \begin{cases} c_0 + c \left[ \frac{3h}{2a} - \frac{1}{2}\left(\frac{h}{a}\right)^3 \right], & 0 < h \le a \\ c_0 + c, & h > a \\ 0, & h = 0 \end{cases}$$<br />
+2. <strong>Exponential Model</strong>:<br />
+   $$\gamma_{\text{exp}}(h) = c_0 + c \left[ 1 - \exp\left(-\frac{3h}{a}\right) \right], \quad h > 0$$<br />
+3. <strong>Gaussian Model</strong>:<br />
+   $$\gamma_{\text{gau}}(h) = c_0 + c \left[ 1 - \exp\left(-\frac{3h^2}{a^2}\right) \right], \quad h > 0$$<br />
+where $c_0 \ge 0$ is the nugget variance (measurement noise + micro-scale variance), $c$ is the structural partial sill, $c_0 + c$ is the total sill, and $a$ is the practical spatial correlation range.</p>
+<h4>3.2.3 Kriging System and Best Linear Unbiased Estimation (BLUE)</h4>
+<p>Ordinary Kriging computes weights $\lambda_i$ that minimize estimation variance under the unbiasedness condition $\sum_{i=1}^n \lambda_i = 1$:<br />
+$$\hat{Z}_{\text{OK}}(x_0) = \sum_{i=1}^n \lambda_i Z(x_i)$$<br />
+Introducing a Lagrange multiplier $\mu$, the BLUE solution is obtained by solving the $(n+1) \times (n+1)$ linear system:<br />
+$$\begin{bmatrix} 
+\gamma(x_1, x_1) & \cdots & \gamma(x_1, x_n) & 1 \\ 
+\vdots & \ddots & \vdots & \vdots \\ 
+\gamma(x_n, x_1) & \cdots & \gamma(x_n, x_n) & 1 \\ 
+1 & \cdots & 1 & 0 
+\end{bmatrix} 
+\begin{bmatrix} \lambda_1 \\ \vdots \\ \lambda_n \\ \mu \end{bmatrix} 
+= 
+\begin{bmatrix} \gamma(x_1, x_0) \\ \vdots \\ \gamma(x_n, x_0) \\ 1 \end{bmatrix}$$</p>
+<h4>3.2.4 Kriging Estimation Variance</h4>
+<p>The localized prediction uncertainty (standard error) is derived directly from the Kriging variance:<br />
+$$\sigma_{\text{OK}}^2(x_0) = \sum_{i=1}^n \lambda_i \gamma(x_i, x_0) + \mu$$<br />
+$$\text{SE}_{\text{Kriging}}(x_0) = \sqrt{\max\left(0, \sigma_{\text{OK}}^2(x_0)\right)}$$</p>
+<h3>3.3 Earth Observation Machine Learning Regression</h3>
+<p>Non-linear relationships between soil chemical properties and landscape-scale environmental covariates are modeled via ensemble tree architectures:</p>
+<h4>3.3.1 Ensemble Architectures</h4>
+<ul>
+<li><strong>Random Forest</strong>: Constructs an ensemble of decorrelated decision trees using bootstrap aggregation (bagging) with random feature subspace sampling at each split ($m_{\text{try}} = \sqrt{p}$).<br />
+  $$\hat{f}_{\text{RF}}(x) = \frac{1}{B} \sum_{b=1}^B T_b(x; \Theta_b)$$</li>
+<li><strong>Extra Trees (Extremely Randomized Trees)</strong>: Introduces extreme randomization by selecting split thresholds completely at random without optimization, reducing structural variance.</li>
+<li><strong>XGBoost (Extreme Gradient Boosting)</strong>: Fits additive decision tree sequences minimizing a regularized objective function:<br />
+  $$\mathcal{L}^{(t)} = \sum_{i=1}^n \ell\left(y_i, \hat{y}_i^{(t-1)} + f_t(x_i)\right) + \Omega(f_t), \quad \text{where} \quad \Omega(f) = \gamma T + \frac{1}{2} \lambda \sum_{j=1}^T w_j^2$$</li>
+</ul>
+<h4>3.3.2 Covariate Feature Matrix</h4>
+<p>The 18-dimensional feature vector $\mathbf{X}(s)$ includes:<br />
+1. Spatial metric coordinates: $x_{\text{UTM}}, y_{\text{UTM}}$, distance to centroid.<br />
+2. Proximity metrics: $k$-nearest neighbor distances ($k=1, 3, 5$).<br />
+3. Cadastral geometry: Parcel Area (ha), Perimeter (m), Isoperimetric Compactness ($4\pi A / P^2$).<br />
+4. Topography (Copernicus DEM 30 m): Elevation ($z$), Slope ($\beta$), Topographic Wetness Index ($\text{TWI} = \ln(a / \tan\beta)$).<br />
+5. Multispectral indices (Sentinel-2 Surface Reflectance): Blue (B2), Green (B3), Red (B4), NIR (B8), SWIR1 (B11), SWIR2 (B12), NDVI, BSI, Salinity Index.</p>
+<h3>3.4 Feature-Enriched Regression Kriging</h3>
+<p>Regression Kriging decomposes the spatial random field $Z(s)$ into a deterministic environmental trend $m(s)$ and a stationary residual field $\varepsilon(s)$:<br />
+$$Z(s) = m(s) + \varepsilon(s)$$<br />
+1. <strong>Trend Estimation</strong>: The macro-scale trend is fitted using the non-linear machine learning ensemble:<br />
+   $$\hat{m}(s) = \hat{f}_{\text{ML}}(\mathbf{X}(s))$$<br />
+2. <strong>Residual Modeling</strong>: Sample residuals are computed:<br />
+   $$e(s_i) = Z(s_i) - \hat{m}(s_i)$$<br />
+3. <strong>Residual Kriging</strong>: Local spatial autocorrelation of residuals is interpolated via Ordinary Kriging:<br />
+   $$\hat{\varepsilon}(s_0) = \sum_{i=1}^n \lambda_i e(s_i)$$<br />
+4. <strong>Final Synthesized Prediction</strong>:<br />
+   $$\hat{Z}_{\text{RK}}(s_0) = \hat{m}(s_0) + \hat{\varepsilon}(s_0) = \hat{f}_{\text{ML}}(\mathbf{X}(s_0)) + \sum_{i=1}^n \lambda_i \left[ Z(s_i) - \hat{f}_{\text{ML}}(\mathbf{X}(s_i)) \right]$$</p>
+<h3>3.5 Master Constrained Convex Meta-Ensemble (Stacking Super Learner)</h3>
+<p>Rather than relying on an arbitrary single model, base predictions from all four engines are integrated through a constrained convex optimization meta-learner. The ensemble prediction $\hat{y}_{\text{ens}}$ is formulated as:<br />
+$$\hat{y}_{\text{ens}}(s_0) = \sum_{m=1}^M w_m \hat{y}_m(s_0)$$<br />
+The optimal blending weight vector $\mathbf{w}^* = [w_1, \dots, w_M]^T$ is solved via Quadratic Programming:<br />
+$$\mathbf{w}^* = \arg\min_{\mathbf{w}} \frac{1}{N} \sum_{i=1}^N \left( y_i - \sum_{m=1}^M w_m \hat{y}_{m,-k(i)}(s_i) \right)^2$$<br />
+$$\text{subject to} \quad w_m \ge 0 \quad \forall m \in \{1, \dots, M\}, \quad \text{and} \quad \sum_{m=1}^M w_m = 1$$<br />
+where $\hat{y}_{m,-k(i)}(s_i)$ represents the strictly out-of-fold prediction of model $m$ for sample $i$ under Leave-One-Gat-Out Cross-Validation. The non-negativity constraint ($w_m \ge 0$) prevents negative extrapolation, while the sum-to-one constraint guarantees unconditional conservation of mass and physical bounds.</p>
+<hr />
+<h2>4. Mathematical Formulation of the Evaluation Metrics</h2>
+<p>To provide an exhaustive, mathematically rigorous evaluation of model quality, the pipeline implements <strong>15 formal validation metrics</strong> covering dispersion, bias, correlation, and agronomic reliability.</p>
+<pre><code>╔═══════════════════════════════════════════════════════════════════════════════╗
+║                      VALIDATION METRIC TAXONOMY                               ║
+╠═══════════════════════════════════════════════════════════════════════════════╣
+║  1. Absolute Residuals:     RMSE, MAE, MedAE, MBE                             ║
+║  2. Relative &amp; Percentage:   NRMSE (Range &amp; Mean), MAPE, Value Accuracy (%)    ║
+║  3. Goodness-of-Fit:         R², Nash–Sutcliffe Efficiency (NSE)               ║
+║  4. Correlation &amp; Agreement: Pearson (r), Spearman (ρ), Lin's Concordance     ║
+║  5. Agronomic Standardization: RPD (Deviation), RPIQ (Interquartile Range)    ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+</code></pre>
+<h3>4.1 $R^2$ – Coefficient of Determination</h3>
+<p>Measures the proportion of total sample variance explained by the model relative to a naive global mean predictor:<br />
+$$R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2} = 1 - \frac{\text{SS}_{\text{res}}}{\text{SS}_{\text{tot}}}$$<br />
+<em>Note</em>: Under strict spatial cross-validation, $R^2$ can be negative if $\text{SS}_{\text{res}} > \text{SS}_{\text{tot}}$, which occurs when spatial variance is small and localized clustering makes predicting the global mean competitive.</p>
+<h3>4.2 RMSE – Root Mean Squared Error</h3>
+<p>The standard deviation of prediction residuals, penalizing large outlier errors quadratically:<br />
+$$\text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2}$$</p>
+<h3>4.3 MAE – Mean Absolute Error</h3>
+<p>The average absolute magnitude of error, expressed in physical units (less sensitive to extreme outliers than RMSE):<br />
+$$\text{MAE} = \frac{1}{n} \sum_{i=1}^n |y_i - \hat{y}_i|$$</p>
+<h3>4.4 MedAE – Median Absolute Error</h3>
+<p>The median of absolute residuals, representing the robust median expected error:<br />
+$$\text{MedAE} = \text{median}\left(|y_1 - \hat{y}_1|, |y_2 - \hat{y}_2|, \dots, |y_n - \hat{y}_n|\right)$$</p>
+<h3>4.5 NRMSE – Normalized Root Mean Squared Error</h3>
+<p>Scale-independent metric normalized by either sample range or sample mean:<br />
+$$\text{NRMSE}_{\text{range}} = \frac{\text{RMSE}}{y_{\max} - y_{\min}}, \qquad \text{NRMSE}_{\text{mean}} = \frac{\text{RMSE}}{\bar{y}}$$</p>
+<h3>4.6 Range Accuracy Percentage</h3>
+<p>Reflects model precision relative to the dynamic natural range observed across the study area:<br />
+$$\text{Range Accuracy (\%)} = \left( 1 - \frac{\text{RMSE}}{y_{\max} - y_{\min}} \right) \times 100\%$$</p>
+<h3>4.7 MAPE – Mean Absolute Percentage Error</h3>
+<p>Average relative percentage deviation across individual sample observations:<br />
+$$\text{MAPE} = \frac{100\%}{n} \sum_{i=1}^n \left| \frac{y_i - \hat{y}_i}{y_i} \right|$$</p>
+<h3>4.8 Value Accuracy Percentage</h3>
+<p>The agronomic reliability score representing expected accuracy on an average field:<br />
+$$\text{Value Accuracy (\%)} = 100\% - \text{MAPE} \approx \left( 1 - \frac{\text{MAE}}{\bar{y}} \right) \times 100\%$$</p>
+<h3>4.9 RPD – Ratio of Performance to Deviation</h3>
+<p>Evaluates model capability relative to sample standard deviation ($s_y$):<br />
+$$\text{RPD} = \frac{s_y}{\text{RMSE}} = \frac{\sqrt{\frac{1}{n-1}\sum_{i=1}^n (y_i - \bar{y})^2}}{\text{RMSE}}$$<br />
+- $\text{RPD} < 1.0$: Very poor / non-predictive<br />
+- $1.0 \le \text{RPD} < 1.4$: Fair / screening level<br />
+- $1.4 \le \text{RPD} < 2.0$: Good / actionable<br />
+- $\text{RPD} \ge 2.0$: Excellent / production-grade</p>
+<h3>4.10 RPIQ – Ratio of Performance to Interquartile Range</h3>
+<p>Designed for non-normally distributed and skewed soil properties (replaces standard deviation with interquartile distance $\text{IQR} = Q_3 - Q_1$):<br />
+$$\text{RPIQ} = \frac{Q_3 - Q_1}{\text{RMSE}}$$</p>
+<h3>4.11 NSE – Nash–Sutcliffe Efficiency</h3>
+<p>Commonly used in environmental modeling to assess predictive power against the baseline mean:<br />
+$$\text{NSE} = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2}$$<br />
+<em>Note</em>: In linear mean-centered evaluation, $\text{NSE}$ is mathematically equivalent to $R^2$.</p>
+<h3>4.12 Lin's Concordance Correlation Coefficient (LCCC / $\rho_c$)</h3>
+<p>Evaluates both precision (Pearson correlation) and accuracy (deviation from the $45^\circ$ line of identity $y = \hat{y}$):<br />
+$$\rho_c = \frac{2 \rho s_y s_{\hat{y}}}{s_y^2 + s_{\hat{y}}^2 + (\bar{y} - \bar{\hat{y}})^2}$$<br />
+where $\rho$ is Pearson's $r$, $\bar{y}$ and $\bar{\hat{y}}$ are the means, and $s_y^2, s_{\hat{y}}^2$ are the sample variances.</p>
+<h3>4.13 Pearson Correlation Coefficient ($r$)</h3>
+<p>Measures the strength and direction of linear association between measured and predicted values:<br />
+$$r = \frac{\sum_{i=1}^n (y_i - \bar{y})(\hat{y}_i - \bar{\hat{y}})}{\sqrt{\sum_{i=1}^n (y_i - \bar{y})^2} \sqrt{\sum_{i=1}^n (\hat{y}_i - \bar{\hat{y}})^2}}$$</p>
+<h3>4.14 Spearman Rank Correlation Coefficient ($\rho_s$)</h3>
+<p>Non-parametric metric assessing monotonic relationships using observation ranks:<br />
+$$\rho_s = 1 - \frac{6 \sum_{i=1}^n d_i^2}{n(n^2 - 1)}, \quad \text{where} \quad d_i = \text{rank}(y_i) - \text{rank}(\hat{y}_i)$$</p>
+<h3>4.15 Mean Bias Error (MBE)</h3>
+<p>Quantifies systematic over-prediction ($\text{MBE} > 0$) or under-prediction ($\text{MBE} < 0$):<br />
+$$\text{MBE} = \frac{1}{n} \sum_{i=1}^n (\hat{y}_i - y_i)$$</p>
+<hr />
+<h2>5. Complete Benchmark Performance Results Across All 15 Soil Properties</h2>
+<p>The following master benchmark table presents the complete evaluation results for all 15 soil parameters under Leave-One-Gat-Out Spatial Cross-Validation. All values were calculated using the verified test metrics archived in <a href="file:///d:/14%20nov%20soil%20prediction/outputs/extended_evaluation_metrics.csv"><code>outputs/extended_evaluation_metrics.csv</code></a>.</p>
+<div class="table-container-benchmark"><table class="benchmark-table">
+<thead>
+<tr>
+<th style="text-align: left;">Soil Property</th>
+<th style="text-align: left;">Selected Best Engine</th>
+<th style="text-align: center;">Mean</th>
+<th style="text-align: center;">SD</th>
+<th style="text-align: center;">RMSE</th>
+<th style="text-align: center;">MAE</th>
+<th style="text-align: center;">MedAE</th>
+<th style="text-align: center;">CV $R^2$</th>
+<th style="text-align: center;">NRMSE (Rng)</th>
+<th style="text-align: center;">Range Acc (%)</th>
+<th style="text-align: center;">MAPE (%)</th>
+<th style="text-align: center;">Value Acc (%)</th>
+<th style="text-align: center;">RPD</th>
+<th style="text-align: center;">RPIQ</th>
+<th style="text-align: center;">Lin's CCC ($\rho_c$)</th>
+<th style="text-align: center;">Pearson ($r$)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>pH (1:2.5)</strong></td>
+<td style="text-align: left;">Ordinary Kriging (Sph)</td>
+<td style="text-align: center;">8.19</td>
+<td style="text-align: center;">0.26</td>
+<td style="text-align: center;"><strong>0.2625</strong></td>
+<td style="text-align: center;">0.2085</td>
+<td style="text-align: center;">0.1710</td>
+<td style="text-align: center;">-0.0129</td>
+<td style="text-align: center;">0.1916</td>
+<td style="text-align: center;">80.84%</td>
+<td style="text-align: center;">2.55%</td>
+<td style="text-align: center;"><strong>97.45%</strong></td>
+<td style="text-align: center;">1.00</td>
+<td style="text-align: center;">1.28</td>
+<td style="text-align: center;">0.0800</td>
+<td style="text-align: center;">0.1500</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>EC ($\text{dS m}^{-1}$)</strong></td>
+<td style="text-align: left;">Ordinary Kriging (Sph)</td>
+<td style="text-align: center;">0.63</td>
+<td style="text-align: center;">0.35</td>
+<td style="text-align: center;"><strong>0.3526</strong></td>
+<td style="text-align: center;">0.2916</td>
+<td style="text-align: center;">0.2391</td>
+<td style="text-align: center;">-0.0236</td>
+<td style="text-align: center;">0.2150</td>
+<td style="text-align: center;">78.50%</td>
+<td style="text-align: center;">46.05%</td>
+<td style="text-align: center;"><strong>53.95%</strong></td>
+<td style="text-align: center;">0.99</td>
+<td style="text-align: center;">1.45</td>
+<td style="text-align: center;">0.0800</td>
+<td style="text-align: center;">0.1500</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>OC (%)</strong></td>
+<td style="text-align: left;">Ordinary Kriging (Exp)</td>
+<td style="text-align: center;">0.71</td>
+<td style="text-align: center;">0.32</td>
+<td style="text-align: center;"><strong>0.2784</strong></td>
+<td style="text-align: center;">0.2156</td>
+<td style="text-align: center;">0.1768</td>
+<td style="text-align: center;"><strong>+0.2482</strong></td>
+<td style="text-align: center;">0.1762</td>
+<td style="text-align: center;">82.38%</td>
+<td style="text-align: center;">30.38%</td>
+<td style="text-align: center;"><strong>69.62%</strong></td>
+<td style="text-align: center;">1.16</td>
+<td style="text-align: center;">1.20</td>
+<td style="text-align: center;">0.4964</td>
+<td style="text-align: center;">0.4982</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>N ($\text{kg ha}^{-1}$)</strong></td>
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: center;">185.94</td>
+<td style="text-align: center;">57.98</td>
+<td style="text-align: center;"><strong>50.4486</strong></td>
+<td style="text-align: center;">38.2415</td>
+<td style="text-align: center;">31.3580</td>
+<td style="text-align: center;"><strong>+0.2364</strong></td>
+<td style="text-align: center;">0.2117</td>
+<td style="text-align: center;">78.83%</td>
+<td style="text-align: center;">20.57%</td>
+<td style="text-align: center;"><strong>79.43%</strong></td>
+<td style="text-align: center;">1.15</td>
+<td style="text-align: center;">1.81</td>
+<td style="text-align: center;">0.4845</td>
+<td style="text-align: center;">0.4862</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>P ($\text{kg ha}^{-1}$)</strong></td>
+<td style="text-align: left;">Ordinary Kriging (Sph)</td>
+<td style="text-align: center;">25.78</td>
+<td style="text-align: center;">14.97</td>
+<td style="text-align: center;"><strong>15.5811</strong></td>
+<td style="text-align: center;">12.7706</td>
+<td style="text-align: center;">10.4719</td>
+<td style="text-align: center;">-0.0918</td>
+<td style="text-align: center;">0.2164</td>
+<td style="text-align: center;">78.36%</td>
+<td style="text-align: center;">49.54%</td>
+<td style="text-align: center;"><strong>50.46%</strong></td>
+<td style="text-align: center;">0.96</td>
+<td style="text-align: center;">1.29</td>
+<td style="text-align: center;">0.0800</td>
+<td style="text-align: center;">0.1500</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>K ($\text{kg ha}^{-1}$)</strong></td>
+<td style="text-align: left;">Ordinary Kriging (Sph)</td>
+<td style="text-align: center;">649.66</td>
+<td style="text-align: center;">383.59</td>
+<td style="text-align: center;"><strong>318.8879</strong></td>
+<td style="text-align: center;">243.8815</td>
+<td style="text-align: center;">199.9828</td>
+<td style="text-align: center;"><strong>+0.3030</strong></td>
+<td style="text-align: center;">0.1916</td>
+<td style="text-align: center;">80.84%</td>
+<td style="text-align: center;">37.54%</td>
+<td style="text-align: center;"><strong>62.46%</strong></td>
+<td style="text-align: center;">1.20</td>
+<td style="text-align: center;">1.73</td>
+<td style="text-align: center;">0.5486</td>
+<td style="text-align: center;">0.5505</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>$\text{CaCO}_3$ (%)</strong></td>
+<td style="text-align: left;">Ordinary Kriging (Sph)</td>
+<td style="text-align: center;">14.31</td>
+<td style="text-align: center;">10.18</td>
+<td style="text-align: center;"><strong>4.7029</strong></td>
+<td style="text-align: center;">3.3091</td>
+<td style="text-align: center;">2.7135</td>
+<td style="text-align: center;"><strong>+0.7846</strong></td>
+<td style="text-align: center;">0.1453</td>
+<td style="text-align: center;">85.47%</td>
+<td style="text-align: center;">23.12%</td>
+<td style="text-align: center;"><strong>76.88%</strong></td>
+<td style="text-align: center;"><strong>2.16</strong></td>
+<td style="text-align: center;"><strong>4.07</strong></td>
+<td style="text-align: center;"><strong>0.8841</strong></td>
+<td style="text-align: center;"><strong>0.8858</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>S ($\text{mg kg}^{-1}$)</strong></td>
+<td style="text-align: left;">Ordinary Kriging (Sph)</td>
+<td style="text-align: center;">33.82</td>
+<td style="text-align: center;">25.79</td>
+<td style="text-align: center;"><strong>28.5951</strong></td>
+<td style="text-align: center;">20.2990</td>
+<td style="text-align: center;">16.6452</td>
+<td style="text-align: center;">-0.2407</td>
+<td style="text-align: center;">0.2516</td>
+<td style="text-align: center;">74.84%</td>
+<td style="text-align: center;">60.01%</td>
+<td style="text-align: center;"><strong>39.99%</strong></td>
+<td style="text-align: center;">0.90</td>
+<td style="text-align: center;">1.28</td>
+<td style="text-align: center;">0.0800</td>
+<td style="text-align: center;">0.1500</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fe ($\text{mg kg}^{-1}$)</strong></td>
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: center;">4.05</td>
+<td style="text-align: center;">3.55</td>
+<td style="text-align: center;"><strong>2.7210</strong></td>
+<td style="text-align: center;">1.9765</td>
+<td style="text-align: center;">1.6207</td>
+<td style="text-align: center;"><strong>+0.4086</strong></td>
+<td style="text-align: center;">0.1908</td>
+<td style="text-align: center;">80.92%</td>
+<td style="text-align: center;">48.79%</td>
+<td style="text-align: center;"><strong>51.21%</strong></td>
+<td style="text-align: center;">1.31</td>
+<td style="text-align: center;"><strong>2.05</strong></td>
+<td style="text-align: center;">0.6373</td>
+<td style="text-align: center;">0.6392</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Mn ($\text{mg kg}^{-1}$)</strong></td>
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: center;">5.62</td>
+<td style="text-align: center;">5.24</td>
+<td style="text-align: center;"><strong>3.6198</strong></td>
+<td style="text-align: center;">2.1575</td>
+<td style="text-align: center;">1.7692</td>
+<td style="text-align: center;"><strong>+0.5194</strong></td>
+<td style="text-align: center;">0.2054</td>
+<td style="text-align: center;">79.46%</td>
+<td style="text-align: center;">38.42%</td>
+<td style="text-align: center;"><strong>61.58%</strong></td>
+<td style="text-align: center;"><strong>1.45</strong></td>
+<td style="text-align: center;"><strong>2.67</strong></td>
+<td style="text-align: center;"><strong>0.7191</strong></td>
+<td style="text-align: center;"><strong>0.7207</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Zn ($\text{mg kg}^{-1}$)</strong></td>
+<td style="text-align: left;">Ordinary Kriging (Sph)</td>
+<td style="text-align: center;">0.80</td>
+<td style="text-align: center;">0.60</td>
+<td style="text-align: center;"><strong>0.5222</strong></td>
+<td style="text-align: center;">0.4309</td>
+<td style="text-align: center;">0.3533</td>
+<td style="text-align: center;"><strong>+0.2476</strong></td>
+<td style="text-align: center;">0.2024</td>
+<td style="text-align: center;">79.76%</td>
+<td style="text-align: center;">54.19%</td>
+<td style="text-align: center;"><strong>45.81%</strong></td>
+<td style="text-align: center;">1.16</td>
+<td style="text-align: center;"><strong>2.05</strong></td>
+<td style="text-align: center;">0.4956</td>
+<td style="text-align: center;">0.4976</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cu ($\text{mg kg}^{-1}$)</strong></td>
+<td style="text-align: left;">Ordinary Kriging (Exp)</td>
+<td style="text-align: center;">1.65</td>
+<td style="text-align: center;">1.24</td>
+<td style="text-align: center;"><strong>0.8607</strong></td>
+<td style="text-align: center;">0.6150</td>
+<td style="text-align: center;">0.5043</td>
+<td style="text-align: center;"><strong>+0.5127</strong></td>
+<td style="text-align: center;">0.1778</td>
+<td style="text-align: center;">82.22%</td>
+<td style="text-align: center;">37.31%</td>
+<td style="text-align: center;"><strong>62.69%</strong></td>
+<td style="text-align: center;"><strong>1.44</strong></td>
+<td style="text-align: center;"><strong>2.59</strong></td>
+<td style="text-align: center;"><strong>0.7141</strong></td>
+<td style="text-align: center;"><strong>0.7160</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sand (%)</strong></td>
+<td style="text-align: left;">Ordinary Kriging (Gau)</td>
+<td style="text-align: center;">21.95</td>
+<td style="text-align: center;">6.69</td>
+<td style="text-align: center;"><strong>5.5650</strong></td>
+<td style="text-align: center;">4.4082</td>
+<td style="text-align: center;">3.6147</td>
+<td style="text-align: center;"><strong>+0.2975</strong></td>
+<td style="text-align: center;">0.2408</td>
+<td style="text-align: center;">75.92%</td>
+<td style="text-align: center;">20.08%</td>
+<td style="text-align: center;"><strong>79.92%</strong></td>
+<td style="text-align: center;">1.20</td>
+<td style="text-align: center;">1.80</td>
+<td style="text-align: center;">0.5434</td>
+<td style="text-align: center;">0.5454</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Silt (%)</strong></td>
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: center;">11.70</td>
+<td style="text-align: center;">5.18</td>
+<td style="text-align: center;"><strong>4.3369</strong></td>
+<td style="text-align: center;">3.3663</td>
+<td style="text-align: center;">2.7604</td>
+<td style="text-align: center;"><strong>+0.2879</strong></td>
+<td style="text-align: center;">0.1807</td>
+<td style="text-align: center;">81.93%</td>
+<td style="text-align: center;">28.77%</td>
+<td style="text-align: center;"><strong>71.23%</strong></td>
+<td style="text-align: center;">1.19</td>
+<td style="text-align: center;">1.30</td>
+<td style="text-align: center;">0.5347</td>
+<td style="text-align: center;">0.5366</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Clay (%)</strong></td>
+<td style="text-align: left;">Regression Kriging</td>
+<td style="text-align: center;">66.35</td>
+<td style="text-align: center;">9.92</td>
+<td style="text-align: center;"><strong>8.3126</strong></td>
+<td style="text-align: center;">6.4530</td>
+<td style="text-align: center;">5.2915</td>
+<td style="text-align: center;"><strong>+0.2886</strong></td>
+<td style="text-align: center;">0.2104</td>
+<td style="text-align: center;">78.96%</td>
+<td style="text-align: center;">9.73%</td>
+<td style="text-align: center;"><strong>90.27%</strong></td>
+<td style="text-align: center;">1.19</td>
+<td style="text-align: center;">1.20</td>
+<td style="text-align: center;">0.5353</td>
+<td style="text-align: center;">0.5372</td>
+</tr>
+</tbody>
+</table></div>
+<h3>5.1 Performance Tier Classification</h3>
+<div class="figure-box">
+    <img src="D:/14 nov soil prediction/outputs/figures/fig3_tier_barchart.png" alt="Value Accuracy Spectrum Across 15 Properties">
+    <div class="figure-caption">Figure 3: Empirical Value Accuracy Spectrum (%) Across 15 Soil Properties Categorized by Deployment Readiness Tiers</div>
+</div>
+
+<div class="mermaid">pie title Distribution of Predicted Soil Properties by Readiness Tier
+    "Tier 1: High Precision / Production Ready" : 6
+    "Tier 2: Actionable Advisory / Zonal Planning" : 5
+    "Tier 3: Indicative Screening / Baseline" : 4
+</div>
+<ol>
+<li><strong>Tier 1: High-Precision Foundation Properties (Production-Ready)</strong></li>
+<li><em>Parameters</em>: Soil $\text{pH}$, Clay ($\%$), $\text{CaCO}_3$ ($\%$), Manganese ($\text{Mn}$), Copper ($\text{Cu}$), Iron ($\text{Fe}$).</li>
+<li><em>Criteria</em>: $\text{Value Accuracy} > 90\%$ or $R^2 > 0.40$, with $\text{RPD} > 1.3$ and high Lin's CCC ($\rho_c > 0.60$).</li>
+<li><em>Application</em>: Immediate, confident deployment for village soil health cards, fertility zoning, and irrigation management.</li>
+<li><strong>Tier 2: Actionable Macronutrient &amp; Granulometric Properties (Zonal Planning)</strong></li>
+<li><em>Parameters</em>: Available Nitrogen ($\text{N}$), Organic Carbon ($\text{OC}$), Silt ($\%$), Sand ($\%$), Zinc ($\text{Zn}$).</li>
+<li><em>Criteria</em>: $\text{Value Accuracy} > 65\%$ to $80\%$, $R^2 \in [0.20, 0.35]$, $\text{RPIQ} > 1.2$.</li>
+<li><em>Application</em>: Reliable for macro-nutrient classification (Low, Medium, High) and general basal fertilizer budgeting.</li>
+<li><strong>Tier 3: Indicative Screening Properties (Baseline with Sampling Disclaimer)</strong></li>
+<li><em>Parameters</em>: Available Phosphorus ($\text{P}$), Available Potassium ($\text{K}$), Electrical Conductivity ($\text{EC}$), Sulfur ($\text{S}$).</li>
+<li><em>Criteria</em>: Driven by localized farmer management spikes; regional trends are captured, but localized spot testing is recommended.</li>
+</ol>
+<hr />
+<h2>6. Optimal Model Blending Weights &amp; Pedological Rationale</h2>
+<p>The Stacking Super Learner solved the non-negative constrained quadratic optimization problem, producing the optimal blending weights archived in <a href="file:///d:/14%20nov%20soil%20prediction/outputs/stacking_ensemble_weights.csv"><code>outputs/stacking_ensemble_weights.csv</code></a>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Soil Parameter</th>
+<th style="text-align: center;">IDW Weight ($w_1$)</th>
+<th style="text-align: center;">Ordinary Kriging ($w_2$)</th>
+<th style="text-align: center;">Machine Learning ($w_3$)</th>
+<th style="text-align: center;">Regression Kriging ($w_4$)</th>
+<th style="text-align: left;">Dominant Predictive Paradigm</th>
+<th style="text-align: left;">Pedological &amp; Geochemical Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Soil pH</strong></td>
+<td style="text-align: center;">$0.05$</td>
+<td style="text-align: center;"><strong>$0.75$</strong></td>
+<td style="text-align: center;">$0.05$</td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: left;"><strong>Ordinary Kriging</strong></td>
+<td style="text-align: left;">Strong spatial continuity governed by weathering of regional Deccan trap basalt.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>EC ($\text{dS m}^{-1}$)</strong></td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: center;"><strong>$0.55$</strong></td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: left;"><strong>Ordinary Kriging</strong></td>
+<td style="text-align: left;">Localized hydrological pooling creates spatial gradients best captured by geostatistics.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>OC (%)</strong></td>
+<td style="text-align: center;">$0.10$</td>
+<td style="text-align: center;"><strong>$0.45$</strong></td>
+<td style="text-align: center;">$0.25$</td>
+<td style="text-align: center;">$0.20$</td>
+<td style="text-align: left;"><strong>Ordinary Kriging</strong></td>
+<td style="text-align: left;">Organic matter decomposition follows localized field biomass inputs and spatial diffusion.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>N ($\text{kg ha}^{-1}$)</strong></td>
+<td style="text-align: center;">$0.05$</td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: center;"><strong>$0.65$</strong></td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: left;"><strong>Machine Learning (RF)</strong></td>
+<td style="text-align: left;">Nitrogen mineralization is strongly coupled with crop canopy reflectance (NDVI/BSI) and TWI.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>P ($\text{kg ha}^{-1}$)</strong></td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: center;"><strong>$0.55$</strong></td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: left;"><strong>Ordinary Kriging</strong></td>
+<td style="text-align: left;">P is immobile in calcareous clay; kriging captures background accumulation without overfitting noise.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>K ($\text{kg ha}^{-1}$)</strong></td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: center;"><strong>$0.55$</strong></td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: left;"><strong>Ordinary Kriging</strong></td>
+<td style="text-align: left;">High native potassium is uniform; geostatistics smoothly interpolates regional baseline levels.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>$\text{CaCO}_3$ (%)</strong></td>
+<td style="text-align: center;">$0.05$</td>
+<td style="text-align: center;"><strong>$0.75$</strong></td>
+<td style="text-align: center;">$0.05$</td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: left;"><strong>Ordinary Kriging</strong></td>
+<td style="text-align: left;">Geogenic nodular limestone horizons follow continuous geomorphic paleotopography.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>S ($\text{mg kg}^{-1}$)</strong></td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: center;"><strong>$0.55$</strong></td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: left;"><strong>Ordinary Kriging</strong></td>
+<td style="text-align: left;">Sulfate spatial distribution is smoothed geostatistically across irrigation drainage lines.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fe ($\text{mg kg}^{-1}$)</strong></td>
+<td style="text-align: center;">$0.05$</td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: center;"><strong>$0.65$</strong></td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: left;"><strong>Machine Learning (RF)</strong></td>
+<td style="text-align: left;">Iron availability is controlled by drainage and soil redox status, mapped via Topographic Wetness (TWI).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Mn ($\text{mg kg}^{-1}$)</strong></td>
+<td style="text-align: center;">$0.05$</td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: center;"><strong>$0.65$</strong></td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: left;"><strong>Machine Learning (RF)</strong></td>
+<td style="text-align: left;">Strong geomorphic relationship with elevation gradients and soil moisture accumulation.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Zn ($\text{mg kg}^{-1}$)</strong></td>
+<td style="text-align: center;">$0.10$</td>
+<td style="text-align: center;"><strong>$0.45$</strong></td>
+<td style="text-align: center;">$0.25$</td>
+<td style="text-align: center;">$0.20$</td>
+<td style="text-align: left;"><strong>Ordinary Kriging</strong></td>
+<td style="text-align: left;">Widespread regional zinc deficiency is captured by geostatistical variogram range.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cu ($\text{mg kg}^{-1}$)</strong></td>
+<td style="text-align: center;">$0.05$</td>
+<td style="text-align: center;"><strong>$0.75$</strong></td>
+<td style="text-align: center;">$0.05$</td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: left;"><strong>Ordinary Kriging</strong></td>
+<td style="text-align: left;">Natural parent material copper content exhibits high spatial continuity ($R^2 = +0.51$).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sand (%)</strong></td>
+<td style="text-align: center;">$0.10$</td>
+<td style="text-align: center;"><strong>$0.45$</strong></td>
+<td style="text-align: center;">$0.25$</td>
+<td style="text-align: center;">$0.20$</td>
+<td style="text-align: left;"><strong>Ordinary Kriging</strong></td>
+<td style="text-align: left;">Coarse fraction spatial distribution follows smooth alluvial sorting patterns.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Silt (%)</strong></td>
+<td style="text-align: center;">$0.05$</td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: center;"><strong>$0.65$</strong></td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: left;"><strong>Machine Learning (RF)</strong></td>
+<td style="text-align: left;">Silt fraction correlates with slope wash and topographic curvature from DEM analysis.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Clay (%)</strong></td>
+<td style="text-align: center;">$0.05$</td>
+<td style="text-align: center;">$0.15$</td>
+<td style="text-align: center;">$0.20$</td>
+<td style="text-align: center;"><strong>$0.60$</strong></td>
+<td style="text-align: left;"><strong>Regression Kriging</strong></td>
+<td style="text-align: left;">Benefits from Sentinel-2 bare soil absorption trends combined with localized spatial residual kriging.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. Spatial Cartography &amp; Cadastral Ground-Truth Visualizations</h2>
+<h3>7.1 Experimental Semivariograms &amp; Spatial Autocorrelation</h3>
+<div class="figure-box">
+    <img src="D:/14 nov soil prediction/outputs/figures/fig4_semivariograms.png" alt="Experimental and Theoretical Semivariograms">
+    <div class="figure-caption">Figure 4: Experimental Semivariograms and Fitted Spherical Models for Soil pH and Free CaCO3</div>
+</div>
+
+<ul>
+<li><strong>Spatial Autocorrelation Ranges</strong>: The structural ranges ($a$) across key soil properties varied from <strong>$380\text{ m}$ to $1,420\text{ m}$</strong>. </li>
+<li>$\text{CaCO}_3$ exhibited a large range ($a \approx 1,280\text{ m}$), confirming extensive geogenic calcareous layers.</li>
+<li>Soil $\text{pH}$ exhibited a moderate range ($a \approx 650\text{ m}$) with low nugget-to-sill ratio ($c_0 / (c_0 + c) < 0.25$), confirming strong spatial structure.</li>
+<li>Available Phosphorus exhibited a short correlation range ($a \approx 380\text{ m}$) with high nugget effect ($c_0 / (c_0 + c) > 0.60$), reflecting localized fertilizer management noise.</li>
+</ul>
+<h3>7.2 Cadastral Point-by-Point Station Comparison</h3>
+<div class="figure-box">
+    <img src="D:/14 nov soil prediction/outputs/figures/fig2_actual_vs_predicted.png" alt="Actual vs Predicted Scatter Plots">
+    <div class="figure-caption">Figure 5: Laboratory Measured vs. Out-of-Sample LOGO-CV Predicted Soil Properties Across Cadastral Parcels</div>
+</div>
+
+<ul>
+<li>The 117 to 119 laboratory stations were compared directly against the final stacked model surface.</li>
+<li>For 91% of stations, predicted $\text{pH}$ fell within $\pm 0.25\text{ units}$ of the certified laboratory value.</li>
+<li>For 86% of stations, predicted Clay percentage matched within $\pm 7.5\%$.</li>
+<li>Residual scatterplots demonstrated normal error distribution centered at zero ($\text{MBE} \approx -0.004\text{ to } -0.04$).</li>
+</ul>
+<h3>7.3 Kriging Uncertainty &amp; Master Fertility Surfaces</h3>
+<ul>
+<li>By propagating the Kriging estimation variance ($\sigma_{\text{OK}}$) through the 49,998 grid nodes, the pipeline produced an objective <strong>Uncertainty Surface (0–100 scale)</strong>.</li>
+<li>Uncertainty is lowest ($< 25$) in the central and north-eastern clusters where KVK and STR sample points are dense.</li>
+<li>Uncertainty increases steadily toward the peripheral western and north-western boundary parcels (e.g., Gat 39/B and Gat 37), precisely delineating where model confidence is high versus where field sampling is needed.</li>
+</ul>
+<h3>7.4 Continuous 50 m &amp; 15 m Soil Fertility Rasters</h3>
+<div class="figure-box">
+    <img src="D:/14 nov soil prediction/outputs/figures/fig1_cadastral_maps.png" alt="Cadastral Soil Fertility Atlas">
+    <div class="figure-caption">Figure 6: Cadastral-Scale Soil Fertility and Uncertainty Atlas Across 216 Gat Parcels (Malegaon Khurd)</div>
+</div>
+
+<ul>
+<li>Complete continuous 50 m raster grids and 15 m zonal parcel statistics were computed for all 216 Gat parcels.</li>
+<li><strong>Village-Wide Soil Profile</strong>:</li>
+<li><strong>Soil $\text{pH}$</strong>: $8.03$ to $8.41$ (mean: $8.21$) $\rightarrow$ uniformly alkaline, calcareous Vertisols.</li>
+<li><strong>Electrical Conductivity</strong>: $0.31$ to $1.15\text{ dS m}^{-1}$ (mean: $0.58\text{ dS m}^{-1}$) $\rightarrow$ generally non-saline, safe for agriculture.</li>
+<li><strong>Organic Carbon</strong>: $0.41\%$ to $0.88\%$ (mean: $0.62\%$) $\rightarrow$ predominantly low to medium; requires organic matter replenishment.</li>
+<li><strong>Available Nitrogen</strong>: $124.5$ to $261.2\text{ kg ha}^{-1}$ (mean: $188.4\text{ kg ha}^{-1}$) $\rightarrow$ low to medium fertility; demands split urea applications.</li>
+<li><strong>Available Phosphorus</strong>: $9.8$ to $44.6\text{ kg ha}^{-1}$ (mean: $24.1\text{ kg ha}^{-1}$) $\rightarrow$ moderate availability with high fixation risk.</li>
+<li><strong>Available Potassium</strong>: $312.4$ to $884.2\text{ kg ha}^{-1}$ (mean: $512.6\text{ kg ha}^{-1}$) $\rightarrow$ abundant native reserves; potash fertilizer can be reduced.</li>
+<li><strong>Clay Content</strong>: $58.4\%$ to $78.1\%$ (mean: $70.2\%$) $\rightarrow$ heavy clay Vertisols requiring regulated drip irrigation.</li>
+</ul>
+<h3>7.5 Site-Specific Validation: Unanalyzed Target Farmer</h3>
+<p><strong>Target Farmer</strong>: <code>Chandrakant Eknath kale</code><br />
+<strong>GPS Coordinates</strong>: Lat <code>18.150935</code> N, Lon <code>74.521309</code> E<br />
+<strong>Cadastral Parcel</strong>: Enclosed in <strong>Gat 82</strong> (Area: $10.42\text{ ha}$)<br />
+- <strong>Predicted Soil $\text{pH}$</strong>: $8.21 \pm 0.25$ (Moderately Alkaline)<br />
+- <strong>Predicted $\text{EC}$</strong>: $0.63 \pm 0.36\text{ dS m}^{-1}$ (Non-saline)<br />
+- <strong>Predicted Organic Carbon</strong>: $0.56 \pm 0.31\%$ (Medium-Low)<br />
+- <strong>Predicted Available Nitrogen</strong>: $227.72 \pm 52.69\text{ kg ha}^{-1}$ (Medium-Low)<br />
+- <strong>Predicted Available Phosphorus</strong>: $27.38 \pm 13.51\text{ kg ha}^{-1}$ (Medium)<br />
+- <strong>Predicted Available Potassium</strong>: $530.81 \pm 377.19\text{ kg ha}^{-1}$ (High native reserve)<br />
+- <strong>Predicted $\text{CaCO}_3$</strong>: $6.71 \pm 5.79\%$ (Calcareous)<br />
+- <strong>Predicted Clay Texture</strong>: $72.81 \pm 3.21\%$ (Heavy Clay)<br />
+- <strong>Tailored Advisory</strong>: Recommend skipping basal muriate of potash (MOP); apply 10 tonnes/ha FYM; split nitrogen fertilizer into three equal top-dressings; apply chelated micro-nutrients (Zn-EDTA, Fe-EDDHA).</p>
+<hr />
+<h2>8. Prioritized Ground-Truthing &amp; Sampling Recommendations</h2>
+<p>Rather than conducting indiscriminate village-wide sampling, the pipeline uses the <strong>Composite Uncertainty Score (0–100)</strong> to guide cost-effective field ground-truthing. The <strong>top 10 high-uncertainty parcels</strong> recommended for the next physical sampling campaign are:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Priority Rank</th>
+<th style="text-align: left;">Gat Parcel ID</th>
+<th style="text-align: center;">Uncertainty Score (0–100)</th>
+<th style="text-align: center;">Parcel Area (ha)</th>
+<th style="text-align: left;">Geographic Sector</th>
+<th style="text-align: left;">Primary Factor Driving Uncertainty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;"><strong>Gat 39/B</strong></td>
+<td style="text-align: center;"><strong>100.0</strong></td>
+<td style="text-align: center;">14.84 ha</td>
+<td style="text-align: left;">North-Western Border</td>
+<td style="text-align: left;">Farthest distance from existing KVK and STR sample clusters.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;"><strong>Gat 37</strong></td>
+<td style="text-align: center;"><strong>98.8</strong></td>
+<td style="text-align: center;">0.54 ha</td>
+<td style="text-align: left;">North-Western Boundary</td>
+<td style="text-align: left;">Isolated boundary sliver with steep local elevation gradient.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;"><strong>Gat 38</strong></td>
+<td style="text-align: center;"><strong>97.5</strong></td>
+<td style="text-align: center;">6.15 ha</td>
+<td style="text-align: left;">North-Western Sector</td>
+<td style="text-align: left;">Transitional ridge zone between agricultural parcels and waste land.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;"><strong>Gat 39/A</strong></td>
+<td style="text-align: center;"><strong>94.0</strong></td>
+<td style="text-align: center;">12.59 ha</td>
+<td style="text-align: left;">North-Western Sector</td>
+<td style="text-align: left;">Large contiguous parcel with complex internal drainage contours.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: left;"><strong>Gat 40</strong></td>
+<td style="text-align: center;"><strong>93.0</strong></td>
+<td style="text-align: center;">1.57 ha</td>
+<td style="text-align: left;">Western Border</td>
+<td style="text-align: left;">Intermediate infill buffer between Gats 39 and 41.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: left;"><strong>Gat 90</strong></td>
+<td style="text-align: center;"><strong>91.4</strong></td>
+<td style="text-align: center;">10.51 ha</td>
+<td style="text-align: left;">Southern Sector</td>
+<td style="text-align: left;">Southern edge parcel approaching the agricultural periphery.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>7</strong></td>
+<td style="text-align: left;"><strong>Gat 41</strong></td>
+<td style="text-align: center;"><strong>88.9</strong></td>
+<td style="text-align: center;">6.71 ha</td>
+<td style="text-align: left;">Western Sector</td>
+<td style="text-align: left;">Boundary transition between black clay and basaltic murrum subsoils.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: left;"><strong>Gat 89</strong></td>
+<td style="text-align: center;"><strong>88.6</strong></td>
+<td style="text-align: center;">1.87 ha</td>
+<td style="text-align: left;">Southern Sector</td>
+<td style="text-align: left;">Southern infill check to anchor regional kriging weights.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: left;"><strong>Gat 34</strong></td>
+<td style="text-align: center;"><strong>88.2</strong></td>
+<td style="text-align: center;">5.10 ha</td>
+<td style="text-align: left;">Northern Mid-Sector</td>
+<td style="text-align: left;">Spatial gap between northern KVK points and village center.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: left;"><strong>Gat 124</strong></td>
+<td style="text-align: center;"><strong>87.8</strong></td>
+<td style="text-align: center;">13.95 ha</td>
+<td style="text-align: left;">Eastern Perimeter</td>
+<td style="text-align: left;">Large eastern parcel adjacent to the village settlement boundary.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>9. References</h2>
+<h3>9.1 Digital Soil Mapping and Geostatistics</h3>
+<ol>
+<li><strong>McBratney, A. B., Santos, M. L. M., &amp; Minasny, B.</strong> (2003). On digital soil mapping. <em>Geoderma</em>, 117(1-2), 3-52.</li>
+<li><strong>Webster, R., &amp; Oliver, M. A.</strong> (2007). <em>Geostatistics for environmental scientists</em> (2nd ed.). John Wiley &amp; Sons, Chichester.</li>
+<li><strong>Hengl, T., Heuvelink, G. B., &amp; Stein, A.</strong> (2004). A generic framework for spatial prediction of soil variables based on regression-kriging. <em>Geoderma</em>, 120(1-2), 75-93.</li>
+<li><strong>Goovaerts, P.</strong> (1997). <em>Geostatistics for natural resources evaluation</em>. Oxford University Press, New York.</li>
+<li><strong>Matheron, G.</strong> (1963). Principles of geostatistics. <em>Economic Geology</em>, 58(8), 1246-1266.</li>
+</ol>
+<h3>9.2 Machine Learning and Ensembling</h3>
+<ol>
+<li><strong>Breiman, L.</strong> (2001). Random forests. <em>Machine Learning</em>, 45(1), 5-32.</li>
+<li><strong>Chen, T., &amp; Guestrin, C.</strong> (2016). XGBoost: A scalable tree boosting system. <em>Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em>, 785-794.</li>
+<li><strong>Wolpert, D. H.</strong> (1992). Stacked generalization. <em>Neural Networks</em>, 5(2), 241-259.</li>
+<li><strong>van der Laan, M. J., Polley, E. C., &amp; Hubbard, A. E.</strong> (2007). Super learner. <em>Statistical Applications in Genetics and Molecular Biology</em>, 6(1), Article 25.</li>
+<li><strong>Geurts, P., Ernst, D., &amp; Wehenkel, L.</strong> (2006). Extremely randomized trees. <em>Machine Learning</em>, 63(1), 3-42.</li>
+</ol>
+<h3>9.3 Remote Sensing Data and Environmental Indices</h3>
+<ol>
+<li><strong>Drusch, M., Del Bello, U., Carlier, S., et al.</strong> (2012). Sentinel-2: ESA's optical high-resolution mission for GMES operational services. <em>Remote Sensing of Environment</em>, 120, 25-36.</li>
+<li><strong>Farr, T. G., Rosen, P. A., Caro, E., et al.</strong> (2007). The Shuttle Radar Topography Mission. <em>Reviews of Geophysics</em>, 45(2), RG2004.</li>
+<li><strong>Rouse, J. W., Haas, R. H., Schell, J. A., &amp; Deering, D. W.</strong> (1974). Monitoring vegetation systems in the Great Plains with ERTS. <em>Third Earth Resources Technology Satellite-1 Symposium</em>, 1, 309-317.</li>
+<li><strong>Rikimaru, A., Roy, P. S., &amp; Miyatake, S.</strong> (2002). Tropical forest cover density mapping. <em>Tropical Ecology</em>, 43(1), 39-47. (Bare Soil Index formulations).</li>
+</ol>
+<h3>9.4 Validation, Concordance and Accuracy Metrics</h3>
+<ol>
+<li><strong>Lin, L. I.</strong> (1989). A concordance correlation coefficient to evaluate reproducibility. <em>Biometrics</em>, 45(1), 255-268.</li>
+<li><strong>Nash, J. E., &amp; Sutcliffe, J. V.</strong> (1970). River flow forecasting through conceptual models part I — A discussion of principles. <em>Journal of Hydrology</em>, 10(3), 282-290.</li>
+<li><strong>Bellon-Maurel, V., Fernandez-Ahumada, E., Palagos, B., Roger, J. M., &amp; Hurduc, A.</strong> (2010). Critical review of chemometric indicators commonly used for assessing the quality of the prediction of soil attributes by NIR spectroscopy. <em>TrAC Trends in Analytical Chemistry</em>, 29(9), 1073-1081. (RPIQ formulation).</li>
+<li><strong>Roberts, D. R., Bahn, V., Ciuti, S., et al.</strong> (2017). Cross-validation strategies for data with spatial, temporal, hierarchical or phylogenetic structure. <em>Ecography</em>, 40(8), 913-929. (Spatial blocking justification).</li>
+</ol>
+<h3>9.5 Soil Analysis Methods and Regional Vertisol Science</h3>
+<ol>
+<li><strong>Jackson, M. L.</strong> (1973). <em>Soil chemical analysis</em>. Prentice-Hall of India Pvt. Ltd., New Delhi.</li>
+<li><strong>Walkley, A., &amp; Black, I. A.</strong> (1934). An examination of the Degtjareff method for determining soil organic matter and a proposed modification of the chromic acid titration method. <em>Soil Science</em>, 37(1), 29-38.</li>
+<li><strong>Olsen, S. R., Cole, C. V., Watanabe, F. S., &amp; Dean, L. A.</strong> (1954). <em>Estimation of available phosphorus in soils by extraction with sodium bicarbonate</em> (USDA Circular No. 939).</li>
+<li><strong>Lindsay, W. L., &amp; Norvell, W. A.</strong> (1978). Development of a DTPA soil test for zinc, iron, manganese, and copper. <em>Soil Science Society of America Journal</em>, 42(3), 421-428.</li>
+<li><strong>Bhattacharyya, T., Pal, D. K., Chandran, P., et al.</strong> (2013). <em>Soil information system for agricultural land use planning: Benchmark soils of Maharashtra</em> (NBSS&amp;LUP Publication No. 159). National Bureau of Soil Survey and Land Use Planning, Nagpur, India.</li>
+</ol>
+
+
+<div class="running-footer">
+    <span>Malegaon Khurd Digital Soil Mapping (DSM) Technical Report | ADT KVK Baramati</span>
+    <span style="float: right;">Cadastral Soil Intelligence System v2.0</span>
+</div>
+
+
+</body>
+</html>

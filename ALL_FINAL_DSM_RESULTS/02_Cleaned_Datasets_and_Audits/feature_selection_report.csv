@@ -1,0 +1,16 @@
+Feature,Category,Resolution,Justification
+Elevation_m,Topography / DEM,30 m (SRTM/Copernicus),"Controls regional basalt weathering gradients, alluvial deposition, and catena soil depth."
+Slope_deg,Topography / DEM,30 m (SRTM/Copernicus),"Governs surface runoff velocity, erosion of fine silt/clay, and sheet wash accumulation."
+TWI,Hydrology / DEM,30 m (Hydro-enforced),"Topographic Wetness Index maps soil saturation zones, moisture pooling, and redox dynamics."
+S2_B2_Blue,Sentinel-2 L2A Reflectance,10 m (Dry-Season Median),Shortwave blue reflectance (490 nm) sensitive to organic matter and iron oxide absorption.
+S2_B3_Green,Sentinel-2 L2A Reflectance,10 m (Dry-Season Median),Green reflectance (560 nm) indicates vegetative vigor and background mineral albedo.
+S2_B4_Red,Sentinel-2 L2A Reflectance,10 m (Dry-Season Median),Red chlorophyll absorption band (665 nm) used in vegetation and bare ground indices.
+S2_B8_NIR,Sentinel-2 L2A Reflectance,10 m (Dry-Season Median),Near-infrared reflectance (842 nm) highly responsive to crop canopy biomass and structure.
+S2_B11_SWIR1,Sentinel-2 L2A Reflectance,20 m (Dry-Season Median),Shortwave-infrared (1610 nm) highly sensitive to soil moisture and clay mineral lattice absorption.
+S2_B12_SWIR2,Sentinel-2 L2A Reflectance,20 m (Dry-Season Median),SWIR-2 band (2190 nm) captures carbonate (calcite) and hydroxyl absorption in vertic clays.
+NDVI,Spectral Index,10 m,Normalized Difference Vegetation Index correlates with historical nitrogen uptake and crop biomass.
+BSI,Spectral Index,10 m,Bare Soil Index highlights exposed soil surface mineralogy and bare ground clay content.
+Salinity_Index,Spectral Index,10 m,Normalized Difference Salinity Index detects surface salt crusts along canal drainage margins.
+gat_area_ha,Cadastral Geometry,Polygon metric,Parcel area reflects farm management scale and mechanization intensity.
+gat_compactness,Cadastral Geometry,Polygon metric,Polsby-Popper ratio distinguishes narrow strip parcels from broad field blocks.
+dist_to_center_km,Spatial Geometry,Euclidean metric,Distance to village center accounts for regional land-use intensity and settlement manure gradients.

@@ -1,0 +1,12 @@
+Target_Property,File_Name,Genuine_Observations,Spatial_Folds_Gats,Min_Value,Max_Value,Mean_Value,Median_Value,StdDev,Predictor_Count,Zero_Missing_Predictors
+pH,dataset_pH.csv,119,48,7.73,9.1,8.19,8.14,0.26,15,True
+EC,dataset_EC.csv,119,48,0.13,1.77,0.63,0.54,0.35,15,True
+OC,dataset_OC.csv,119,48,0.16,1.74,0.71,0.66,0.32,15,True
+CaCO3,dataset_CaCO3.csv,119,48,1.8,34.17,14.31,9.1,10.13,15,True
+N,dataset_N.csv,119,48,62.72,301.05,185.94,194.43,57.73,15,True
+P,dataset_P.csv,119,48,3.89,75.89,25.78,21.32,14.91,15,True
+K,dataset_K.csv,119,48,15.85,1680.0,649.66,534.8,381.97,15,True
+S,dataset_S.csv,112,48,2.05,115.7,33.82,24.88,25.67,15,True
+Sand,dataset_Sand.csv,72,43,12.0,35.11,21.95,19.5,6.64,15,True
+Silt,dataset_Silt.csv,72,43,0.0,24.0,11.7,10.0,5.14,15,True
+Clay,dataset_Clay.csv,72,43,41.0,80.5,66.35,68.0,9.86,15,True

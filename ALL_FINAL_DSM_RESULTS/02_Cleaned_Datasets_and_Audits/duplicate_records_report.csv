@@ -1,0 +1,3 @@
+Audit_Type,Sample_ID,Source_Sheet,Gat_Name,Latitude,Longitude,pH,N,P,K,Clay,Investigation_Finding
+Duplicated Sample ID,MAL 41,STR_updated,Gat 79,18.15029326052777,74.52069522902421,8.87,156.8,9.55,260.96,68.0,Confirmed separate physical lab observation at same GPS point (verified against Table 0 in Baramati Soil Analysis 1.docx). Distinct chemical and texture measurements. Retained under unique IDs (MAL 41_A and MAL 41_B).
+Duplicated Sample ID,MAL 41,STR_updated,Gat 79,18.1502932605277,74.5206952290242,9.1,206.97,22.16,285.6,68.0,Confirmed separate physical lab observation at same GPS point (verified against Table 0 in Baramati Soil Analysis 1.docx). Distinct chemical and texture measurements. Retained under unique IDs (MAL 41_A and MAL 41_B).

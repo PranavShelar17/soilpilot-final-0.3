@@ -1,0 +1,4 @@
+Fraction,Method,RMSE,MAE,R2,Simplex_Closure
+Clay,Compositional ALR (CatBoost),9.9693,7.5703,-0.0232,Strict 100.0% Mass Conservation
+Sand,Compositional ALR (CatBoost),6.4603,5.4098,0.0532,Strict 100.0% Mass Conservation
+Silt,Compositional ALR (CatBoost),5.6215,4.2361,-0.2036,Strict 100.0% Mass Conservation
