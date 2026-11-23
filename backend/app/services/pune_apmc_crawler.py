@@ -271,7 +271,12 @@ class PuneApmcCrawlerService:
         Uses dynamic date discovery to ensure the freshest published records are retrieved.
         """
         all_records: List[Dict[str, Any]] = []
-        target_sections = APMC_PUNE_SECTIONS
+        # Prioritize primary sections hosting the 7 target crops for high speed & reliability
+        PRIMARY_7_CROP_SECTIONS = [
+            "main-kanda", "main-veg", "main-fruit", "main-gul-bhusar-dhanya", "keli-paan",
+            "manjari-onion", "manjari-veg", "manjari-fruit"
+        ]
+        target_sections = [s for s in APMC_PUNE_SECTIONS if s["id"] in PRIMARY_7_CROP_SECTIONS]
         if sections:
             target_sections = [s for s in APMC_PUNE_SECTIONS if s["id"] in sections]
 

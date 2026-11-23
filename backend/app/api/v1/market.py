@@ -87,20 +87,36 @@ def get_latest_market_records(
     Returns the freshest published daily auction prices from Pune APMC for the 7 target crops.
     Automatically determines the latest available date in the database.
     """
-    # Find latest date in DB
-    latest_date = db.query(func.max(ApmcDailyMarketPrice.market_date)).filter(
-        ApmcDailyMarketPrice.commodity_code.in_(TARGET_ALLOWED_CROPS)
-    ).scalar()
-    if not latest_date:
-        # Trigger crawl if empty
-        pune_apmc_crawler.ingest_into_database(db, max_days_back=2)
-        latest_date = db.query(func.max(ApmcDailyMarketPrice.market_date)).filter(
-            ApmcDailyMarketPrice.commodity_code.in_(TARGET_ALLOWED_CROPS)
-        ).scalar()
-
-    query = db.query(ApmcDailyMarketPrice).filter(
-        ApmcDailyMarketPrice.market_date == latest_date,
+    # Ensure fresh records exist; if database has fewer than 7 crops for recent days, trigger crawl
+    today = date.today()
+    crops_today_count = db.query(func.count(func.distinct(ApmcDailyMarketPrice.commodity_code))).filter(
+        ApmcDailyMarketPrice.market_date >= today - timedelta(days=1),
         ApmcDailyMarketPrice.commodity_code.in_(TARGET_ALLOWED_CROPS),
+    ).scalar() or 0
+
+    if crops_today_count < 7:
+        try:
+            pune_apmc_crawler.ingest_into_database(db, max_days_back=2)
+        except Exception:
+            pass
+
+    # Subquery to retrieve the latest available auction date for each commodity
+    latest_dates_sub = (
+        db.query(
+            ApmcDailyMarketPrice.commodity_code,
+            func.max(ApmcDailyMarketPrice.market_date).label("max_date"),
+        )
+        .filter(ApmcDailyMarketPrice.commodity_code.in_(TARGET_ALLOWED_CROPS))
+        .group_by(ApmcDailyMarketPrice.commodity_code)
+        .subquery()
+    )
+
+    query = db.query(ApmcDailyMarketPrice).join(
+        latest_dates_sub,
+        and_(
+            ApmcDailyMarketPrice.commodity_code == latest_dates_sub.c.commodity_code,
+            ApmcDailyMarketPrice.market_date == latest_dates_sub.c.max_date,
+        ),
     )
 
     if section and section != "all":
@@ -118,7 +134,27 @@ def get_latest_market_records(
             )
         )
 
-    records = query.order_by(ApmcDailyMarketPrice.market_section, ApmcDailyMarketPrice.commodity_name).limit(limit).all()
+    raw_records = query.all()
+
+    # Prioritize Main Yard (Gultekdi) over sub-yards and ensure 1 canonical row per crop
+    canonical_order = ["ONION", "TOMATO", "MAIZE", "SUGARCANE", "POMEGRANATE", "BANANA", "SOYBEAN"]
+    raw_records.sort(
+        key=lambda r: (0 if "Gultekdi" in (r.market_name or "") or "main" in (r.market_section or "") else 1)
+    )
+
+    seen_codes = set()
+    records = []
+    for r in raw_records:
+        code = r.commodity_code
+        if code in TARGET_ALLOWED_CROPS and code not in seen_codes:
+            seen_codes.add(code)
+            records.append(r)
+
+    records.sort(
+        key=lambda r: canonical_order.index(r.commodity_code) if r.commodity_code in canonical_order else 99
+    )
+
+    latest_date = max([r.market_date for r in records]) if records else today
 
     return {
         "status": "success",

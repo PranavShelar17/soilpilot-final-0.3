@@ -56,10 +56,14 @@ def auto_seed_if_empty():
         from app.services.market_ingestion_service import market_ingestion_service
         market_ingestion_service.ensure_seed_metadata(db2)
         today = date.today()
-        recent_count = db2.query(MarketPriceObservation).filter(
-            MarketPriceObservation.observation_date >= today - timedelta(days=2)
-        ).count()
-        if recent_count < 10:
+        from app.models.market_intelligence import ApmcDailyMarketPrice
+        from app.services.pune_apmc_crawler import TARGET_ALLOWED_CROPS
+        from sqlalchemy import func
+        today_crops_count = db2.query(func.count(func.distinct(ApmcDailyMarketPrice.commodity_code))).filter(
+            ApmcDailyMarketPrice.market_date >= today - timedelta(days=1),
+            ApmcDailyMarketPrice.commodity_code.in_(TARGET_ALLOWED_CROPS),
+        ).scalar() or 0
+        if today_crops_count < 7:
             logger.info("Automatically fetching live daily market prices from apmcpune.in...")
             pune_apmc_crawler.ingest_into_database(db2)
     except Exception as e:

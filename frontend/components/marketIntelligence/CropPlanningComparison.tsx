@@ -184,6 +184,24 @@ export const CropPlanningComparison: React.FC<CropPlanningComparisonProps> = ({
 
   // Filter & Display State
   const [apmcRateMap, setApmcRateMap] = useState<Map<string, ApmcDailyPriceRecord>>(new Map());
+
+  const getLiveApmcRate = (cropCode?: string, cropName?: string, fallbackRate?: any): any => {
+    const code = (cropCode || "").toUpperCase().trim();
+    const name = (cropName || "").toUpperCase().trim();
+
+    if (code && apmcRateMap.has(code)) return apmcRateMap.get(code);
+    if (name && apmcRateMap.has(name)) return apmcRateMap.get(name);
+
+    if (code.includes("ONION") || name.includes("ONION") || name.includes("कांदा")) return apmcRateMap.get("ONION") || fallbackRate;
+    if (code.includes("TOMATO") || name.includes("TOMATO") || name.includes("टोमॅटो")) return apmcRateMap.get("TOMATO") || fallbackRate;
+    if (code.includes("MAIZE") || name.includes("MAIZE") || name.includes("मका")) return apmcRateMap.get("MAIZE") || fallbackRate;
+    if (code.includes("SUGARCANE") || name.includes("SUGARCANE") || name.includes("ऊस")) return apmcRateMap.get("SUGARCANE") || fallbackRate;
+    if (code.includes("POMEGRANATE") || name.includes("POMEGRANATE") || name.includes("डाळिंब") || name.includes("डाळींब")) return apmcRateMap.get("POMEGRANATE") || fallbackRate;
+    if (code.includes("BANANA") || name.includes("BANANA") || name.includes("केळी")) return apmcRateMap.get("BANANA") || fallbackRate;
+    if (code.includes("SOYBEAN") || name.includes("SOYBEAN") || name.includes("सोयाबीन")) return apmcRateMap.get("SOYBEAN") || fallbackRate;
+
+    return fallbackRate;
+  };
   const [selectedTierFilter, setSelectedTierFilter] = useState<string>("ALL");
   const [areaUnitView, setAreaUnitView] = useState<"acre" | "ha" | "field">("acre");
   const [scenarioView, setScenarioView] = useState<"central" | "conservative" | "optimistic">("central");
@@ -860,10 +878,7 @@ export const CropPlanningComparison: React.FC<CropPlanningComparisonProps> = ({
                       net = sc?.net_return_operational_field_total;
                     }
 
-                    const apmc =
-                      apmcRateMap.get(crop.crop_code.toUpperCase()) ||
-                      apmcRateMap.get(crop.crop_name.toUpperCase()) ||
-                      (crop.financials?.apmc_live_rate as any);
+                    const apmc = getLiveApmcRate(crop.crop_code, crop.crop_name, crop.financials?.apmc_live_rate);
 
                     return (
                       <React.Fragment key={crop.crop_code}>
@@ -1317,10 +1332,7 @@ export const CropPlanningComparison: React.FC<CropPlanningComparisonProps> = ({
                   net = sc?.net_return_operational_field_total;
                 }
 
-                const apmc =
-                  apmcRateMap.get(crop.crop_code.toUpperCase()) ||
-                  apmcRateMap.get(crop.crop_name.toUpperCase()) ||
-                  (crop.financials?.apmc_live_rate as any);
+                const apmc = getLiveApmcRate(crop.crop_code, crop.crop_name, crop.financials?.apmc_live_rate);
 
                 return (
                   <div
