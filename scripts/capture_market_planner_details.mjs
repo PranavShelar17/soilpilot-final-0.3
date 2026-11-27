@@ -108,10 +108,23 @@ async function main() {
     `
   });
 
+  const waitFor = async (fnExpr, timeoutMs = 15000) => {
+    const start = Date.now();
+    while (Date.now() - start < timeoutMs) {
+      try {
+        const res = await send('Runtime.evaluate', { expression: fnExpr, returnByValue: true });
+        if (res && res.result && res.result.value) return true;
+      } catch (e) {}
+      await new Promise(r => setTimeout(r, 600));
+    }
+    return false;
+  };
+
   // 1. Find Crops for My Farm - Overview Cards
   console.log('Capturing Find Crops for My Farm...');
   await send('Page.navigate', { url: 'http://localhost:3000/market-intelligence?tab=find_crops' });
-  await new Promise(r => setTimeout(r, 6000));
+  await waitFor(`document.body.innerText.includes('Onion') && document.body.innerText.includes('Recommended Option')`);
+  await new Promise(r => setTimeout(r, 1500));
   let shot = await send('Page.captureScreenshot', { format: 'png' });
   fs.writeFileSync(path.join(ARTIFACT_DIR, 'market_planner_find_crops.png'), Buffer.from(shot.data, 'base64'));
   console.log('Saved market_planner_find_crops.png');
@@ -143,7 +156,8 @@ async function main() {
   // 2. Today's Crop Prices Tab (Pune APMC Gultekdi)
   console.log("Capturing Today's Live Crop Prices tab...");
   await send('Page.navigate', { url: 'http://localhost:3000/market-intelligence?tab=today_prices' });
-  await new Promise(r => setTimeout(r, 6000));
+  await waitFor(`document.body.innerText.includes('Auction Bulletin Date: 202') && document.body.innerText.includes('11,854') || document.body.innerText.includes('10,114')`);
+  await new Promise(r => setTimeout(r, 1500));
   shot = await send('Page.captureScreenshot', { format: 'png' });
   fs.writeFileSync(path.join(ARTIFACT_DIR, 'market_planner_live_mandi_prices.png'), Buffer.from(shot.data, 'base64'));
   console.log('Saved market_planner_live_mandi_prices.png');
@@ -151,7 +165,8 @@ async function main() {
   // 3. Plan My Planting Tab (Windows and Duration)
   console.log('Capturing Plan My Planting tab...');
   await send('Page.navigate', { url: 'http://localhost:3000/market-intelligence?tab=plan_planting' });
-  await new Promise(r => setTimeout(r, 6000));
+  await waitFor(`document.body.innerText.includes('Choose Planning Horizon') || document.body.innerText.includes('Option 1')`);
+  await new Promise(r => setTimeout(r, 1500));
   shot = await send('Page.captureScreenshot', { format: 'png' });
   fs.writeFileSync(path.join(ARTIFACT_DIR, 'market_planner_planting_schedule.png'), Buffer.from(shot.data, 'base64'));
   console.log('Saved market_planner_planting_schedule.png');

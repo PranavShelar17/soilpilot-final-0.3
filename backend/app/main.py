@@ -25,9 +25,43 @@ app.add_middleware(
 )
 
 
+import asyncio
+
+async def auto_daily_market_sync_worker():
+    """Background worker that automatically checks and syncs daily APMC prices every 30 minutes."""
+    while True:
+        try:
+            await asyncio.sleep(1800)  # check every 30 minutes
+            from app.db.session import SessionLocal
+            from app.models.market_intelligence import ApmcDailyMarketPrice
+            from app.services.pune_apmc_crawler import pune_apmc_crawler, TARGET_ALLOWED_CROPS
+            from sqlalchemy import func
+            from datetime import date
+
+            db_bg = SessionLocal()
+            try:
+                today = date.today()
+                today_count = db_bg.query(func.count(func.distinct(ApmcDailyMarketPrice.commodity_code))).filter(
+                    ApmcDailyMarketPrice.market_date == today,
+                    ApmcDailyMarketPrice.commodity_code.in_(TARGET_ALLOWED_CROPS),
+                ).scalar() or 0
+                if today_count < 7:
+                    logger.info("Background worker: Ingesting fresh daily market prices for %s...", today)
+                    pune_apmc_crawler.ingest_into_database(db_bg)
+            finally:
+                db_bg.close()
+        except asyncio.CancelledError:
+            break
+        except Exception as err:
+            logger.warning("Auto daily market sync worker error: %s", err)
+
+
 @app.on_event("startup")
 def auto_seed_if_empty():
     """Ensure database has official Pune geographic hierarchy seeded on startup."""
+    import asyncio
+    asyncio.create_task(auto_daily_market_sync_worker())
+
     from app.db.session import SessionLocal
     from app.models.geography import State
     db = SessionLocal()
@@ -47,10 +81,10 @@ def auto_seed_if_empty():
     finally:
         db.close()
 
-    # Automatically check and ingest daily APMC Pune prices if missing
+    # Automatically check and ingest daily APMC Pune prices if missing for TODAY
     db2 = SessionLocal()
     try:
-        from datetime import date, timedelta
+        from datetime import date
         from app.models.market_intelligence import MarketPriceObservation
         from app.services.pune_apmc_crawler import pune_apmc_crawler
         from app.services.market_ingestion_service import market_ingestion_service
@@ -60,11 +94,11 @@ def auto_seed_if_empty():
         from app.services.pune_apmc_crawler import TARGET_ALLOWED_CROPS
         from sqlalchemy import func
         today_crops_count = db2.query(func.count(func.distinct(ApmcDailyMarketPrice.commodity_code))).filter(
-            ApmcDailyMarketPrice.market_date >= today - timedelta(days=1),
+            ApmcDailyMarketPrice.market_date == today,
             ApmcDailyMarketPrice.commodity_code.in_(TARGET_ALLOWED_CROPS),
         ).scalar() or 0
         if today_crops_count < 7:
-            logger.info("Automatically fetching live daily market prices from apmcpune.in...")
+            logger.info("Automatically fetching live daily market prices from apmcpune.in for %s...", today)
             pune_apmc_crawler.ingest_into_database(db2)
     except Exception as e:
         logger.warning(f"Auto daily APMC sync on startup: {e}")

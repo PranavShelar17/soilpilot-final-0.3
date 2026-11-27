@@ -158,6 +158,9 @@ export const marketService = {
     market_name: string;
     source: string;
     total: number;
+    is_today?: boolean;
+    bulletin_status?: string;
+    status_note?: string;
     records: ApmcDailyPriceRecord[];
   } | null> {
     try {

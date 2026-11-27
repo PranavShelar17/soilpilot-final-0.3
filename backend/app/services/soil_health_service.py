@@ -385,8 +385,8 @@ class SoilHealthService:
         if not farmer_name or not farmer_name.strip():
             if str(display_gat) == "37":
                 resolved_farmer_name = "Chandrakant Sitaram Saste (चंद्रकांत सीताराम सस्ते)"
-            elif field and field.farmer and field.farmer.name:
-                resolved_farmer_name = field.farmer.name
+            elif field and field.farmer and (getattr(field.farmer, "full_name", None) or getattr(field.farmer, "name", None)):
+                resolved_farmer_name = getattr(field.farmer, "full_name", None) or getattr(field.farmer, "name", None)
             else:
                 resolved_farmer_name = "Ramesh Patil (रमेश पाटील)"
         else:

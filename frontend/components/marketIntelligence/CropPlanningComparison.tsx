@@ -526,7 +526,7 @@ export const CropPlanningComparison: React.FC<CropPlanningComparisonProps> = ({
 
         {/* Planning Context Banner */}
         {decisionPlan && (
-          <div className="mt-4 pt-4 border-t border-[#FBE6C2]/80 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
+          <div className="mt-4 pt-4 border-t border-[#FBE6C2]/80 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 text-xs">
             <div className="bg-white/80 p-2.5 rounded-lg border border-border/50">
               <span className="text-text-muted block text-[11px] font-medium">{isMr ? "शेत / गट क्रमांक" : "Gat / Parcel"}</span>
               <span className="font-bold text-text-primary text-sm">Gat {decisionPlan.planning_context.gat_no}</span>
@@ -591,12 +591,6 @@ export const CropPlanningComparison: React.FC<CropPlanningComparisonProps> = ({
                   : decisionPlan.planning_context.irrigation_status}
               </span>
               <span className="block text-[10px] text-text-muted">{isMr ? "खात्री आवश्यक" : "Verification Required"}</span>
-            </div>
-
-            <div className="bg-white/80 p-2.5 rounded-lg border border-border/50">
-              <span className="text-text-muted block text-[11px] font-medium">{isMr ? "मूल्यांकित पिके" : "Crops Evaluated"}</span>
-              <span className="font-bold text-[#2A7C13] text-sm">{decisionPlan.total_crops_evaluated} Crops</span>
-              <span className="block text-[10px] text-text-muted">v{decisionPlan.engine_version}</span>
             </div>
           </div>
         )}

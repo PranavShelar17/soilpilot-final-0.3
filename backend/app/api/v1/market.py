@@ -9,15 +9,31 @@ Provides endpoints for Pune APMC live and historical prices as specified in Mast
 - POST /api/v1/market/sync
 """
 
+import logging
 from datetime import date, datetime, timedelta, timezone
 from typing import Optional, List, Dict, Any
-from fastapi import APIRouter, Depends, Query, HTTPException, status
+from fastapi import APIRouter, Depends, Query, HTTPException, status, BackgroundTasks
 from sqlalchemy.orm import Session
 from sqlalchemy import select, and_, or_, desc, func
 
-from app.db.session import get_db
+from app.db.session import get_db, SessionLocal
 from app.models.market_intelligence import ApmcDailyMarketPrice, MarketPriceObservation
 from app.services.pune_apmc_crawler import pune_apmc_crawler, APMC_PUNE_SECTIONS, TARGET_ALLOWED_CROPS
+
+logger = logging.getLogger("soilpilot.market")
+_last_crawl_timestamp: Optional[datetime] = None
+
+
+def _run_background_crawl():
+    """Background task to sync latest APMC bulletin without blocking user requests."""
+    global _last_crawl_timestamp
+    try:
+        with SessionLocal() as bg_db:
+            pune_apmc_crawler.ingest_into_database(bg_db, max_days_back=2)
+            _last_crawl_timestamp = datetime.now()
+            logger.info("Background APMC crawl completed successfully.")
+    except Exception as e:
+        logger.warning(f"Background APMC crawl skipped or failed: {e}")
 
 router = APIRouter(prefix="/market", tags=["APMC Market Prices"])
 
@@ -81,24 +97,26 @@ def get_latest_market_records(
     market: Optional[str] = Query(None, description="Optional market/submarket name filter"),
     search: Optional[str] = Query(None, description="Search commodity name (English or Marathi)"),
     limit: int = Query(150, ge=1, le=500, description="Max records to return"),
+    background_tasks: BackgroundTasks = None,
     db: Session = Depends(get_db),
 ):
     """
     Returns the freshest published daily auction prices from Pune APMC for the 7 target crops.
     Automatically determines the latest available date in the database.
     """
-    # Ensure fresh records exist; if database has fewer than 7 crops for recent days, trigger crawl
+    # Non-blocking check: if database has fewer than 7 crops for today, trigger crawl in background with 1h cooldown
     today = date.today()
     crops_today_count = db.query(func.count(func.distinct(ApmcDailyMarketPrice.commodity_code))).filter(
-        ApmcDailyMarketPrice.market_date >= today - timedelta(days=1),
+        ApmcDailyMarketPrice.market_date == today,
         ApmcDailyMarketPrice.commodity_code.in_(TARGET_ALLOWED_CROPS),
     ).scalar() or 0
 
     if crops_today_count < 7:
-        try:
-            pune_apmc_crawler.ingest_into_database(db, max_days_back=2)
-        except Exception:
-            pass
+        now = datetime.now()
+        global _last_crawl_timestamp
+        if not _last_crawl_timestamp or (now - _last_crawl_timestamp).total_seconds() >= 3600:
+            if background_tasks:
+                background_tasks.add_task(_run_background_crawl)
 
     # Subquery to retrieve the latest available auction date for each commodity
     latest_dates_sub = (
@@ -155,6 +173,13 @@ def get_latest_market_records(
     )
 
     latest_date = max([r.market_date for r in records]) if records else today
+    is_today = bool(latest_date == today)
+    bulletin_status = "TODAY_LIVE" if is_today else "PREVIOUS_SESSION"
+    status_note = (
+        "Live Mandi Bulletin (Today)"
+        if is_today
+        else f"Latest Verified Trading Session ({latest_date.strftime('%d %b %Y')})"
+    )
 
     return {
         "status": "success",
@@ -162,6 +187,9 @@ def get_latest_market_records(
         "market_name": "Pune APMC",
         "source": "https://apmcpune.in/en/market-price-en/daily-market-price-en",
         "total": len(records),
+        "is_today": is_today,
+        "bulletin_status": bulletin_status,
+        "status_note": status_note,
         "records": [
             {
                 "id": r.id,
